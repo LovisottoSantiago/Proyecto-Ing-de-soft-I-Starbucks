@@ -1,0 +1,10 @@
+appsettings.json
+appsettings.Development.json
+
+# Carpetas que no deben ser versionadas
+bin/
+obj/
+.vs/
+.fake/
+
+# git rm -r --cached bin/ obj/ .vs/ .fake/ appsettings.json appsettings.Development.json

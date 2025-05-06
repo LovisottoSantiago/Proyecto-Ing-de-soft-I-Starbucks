@@ -1,0 +1,48 @@
+@model IEnumerable<Ing_Soft.Models.OrdenCompra>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID_Proveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <!-- Html.DisplayFor(modelItem => item.Fecha) --> 
+                @item.Fecha?.ToString("dd/MM/yyyy  HH:mm:ss")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Proveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID_OrdenCompra">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID_OrdenCompra">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID_OrdenCompra">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

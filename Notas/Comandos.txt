@@ -1,0 +1,71 @@
+Comandos que usé para crear las clases automaticamente
+
+dotnet tool install --global dotnet-ef
+
+
+dotnet ef dbcontext scaffold "la sentencia de conexion del .json" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
+
+Ahí ya te crea los modelos automaticamente (convierte las Tablas de la BD en Objetos)
+El tema es que no te define las PK, es el paso siguiente (debe haber alguna manera de hacerlo)
+
+Agarro por ej Cliente.cs y le agregó un [KEY] adelante del atributo que sea la PK y listo.
+En los que tengan una FK agregás [ForeignKey("Nombre de la Tabla")]
+
+
+Ahora podemos tirar un comando para crear los controladores y vistas de una clase en particular.
+Che, ojo, esto te codea una banda, lo puse solo en la clase Producto como para tener una referencia pero posta te hace todo el laburo.
+
+dotnet tool install --global dotnet-aspnet-codegenerator
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+
+El comando en cuestion:
+dotnet aspnet-codegenerator controller -name ProductoController -m Producto -dc AppDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+
+--relativeFolderPath Controllers: lo pone en la carpeta Controllers.
+--useDefaultLayout: usa el layout de Razor por defecto.
+--referenceScriptLibraries: incluye scripts de validación en el formulario.
+
+
+
+Output:
+
+Using database provider 'Microsoft.EntityFrameworkCore.SqlServer'!
+Added Controller : '\Controllers\ProductoController.cs'.
+Added View : \Views\Producto\Create.cshtml
+Added View : \Views\Producto\Edit.cshtml
+Added View : \Views\Producto\Details.cshtml
+Added View : \Views\Producto\Delete.cshtml
+Added View : \Views\Producto\Index.cshtml
+PS C:\Users\lovi\Documents\Github\Proyecto-Ing-de-soft-I-Starbucks>
+
+
+
+
+Fuentes y documentacion:
+Scaffold: https://learn.microsoft.com/en-us/ef/core/cli/dotnet#dotnet-ef-dbcontext-scaffold
+Code generator: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/tools/dotnet-aspnet-codegenerator?view=aspnetcore-9.0
+
+
+
+
+# Que hacer si tenias subido una key en publico
+
+# Paso 1: Crear una rama temporal
+git checkout --orphan temp_branch
+
+# Paso 2: Añadir todo lo que NO está ignorado (archivo gitignore)
+git add .
+
+# Paso 3: Hacer un nuevo commit inicial
+git commit -m "Nuevo inicio limpio del proyecto"
+
+# Paso 4: Borrar la rama main (o master)
+git branch -D main
+
+# Paso 5: Renombrar la rama actual a main
+git branch -m main
+
+# Paso 6: Forzar el push al repositorio remoto (¡con cuidado!)
+git push -f origin main
