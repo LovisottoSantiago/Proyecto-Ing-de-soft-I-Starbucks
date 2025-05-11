@@ -27,12 +27,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagenUrl)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr style="vertical-align: middle;">
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
@@ -47,6 +50,10 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td style="text-align: center;">
+                @* @Html.DisplayFor(modelItem => item.ImagenUrl) *@
+                <img src="@item.ImagenUrl" alt="Imagen del producto" style="max-height:80px;" />
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a> |

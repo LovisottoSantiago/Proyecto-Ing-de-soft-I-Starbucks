@@ -19,6 +19,8 @@ public partial class Producto
 
     public bool? Estado { get; set; }
 
+    public string? ImagenUrl { get; set; }
+
     public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; } = new List<DetalleFactura>();
 
     public virtual ICollection<DetalleOrdenCompra> DetalleOrdenCompras { get; set; } = new List<DetalleOrdenCompra>();
