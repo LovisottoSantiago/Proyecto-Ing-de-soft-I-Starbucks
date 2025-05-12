@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ing_Soft.Data;
 using Ing_Soft.Models;
+using Ing_Soft.Filters;
 
 namespace Ing_Soft.Controllers
 {
+    [RolAuthorize("Administrador")]
     public class FacturaController : Controller
     {
         private readonly AppDbContext _context;

@@ -15,6 +15,7 @@ namespace Ing_Soft.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.Clear();
             return View();
         }
 
@@ -28,5 +29,35 @@ namespace Ing_Soft.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        // Para el login
+        [HttpPost]
+        public IActionResult Login(string rol)
+        {
+            HttpContext.Session.SetString("Rol", rol);
+            if (rol == "Administrador")
+            {
+                return RedirectToAction("Index", "Producto");
+            }
+            else if (rol == "Usuario")
+            {
+                return RedirectToAction("Index", "Cliente");
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult AccesoDenegado()
+        {
+            return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

@@ -20,12 +20,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <!-- OJO, puse logout para probar, es index acá -->
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Home</a> 
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
+                        <!-- para mi el error está en que lo metiste adentro del asp-action -->
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="showLogin()">Vista admin</a>
                         </li>
                                                 
