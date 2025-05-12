@@ -24,34 +24,11 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cobranza" asp-action="Index">Cobranzas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="showLogin()">Vista admin</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="DetalleFactura" asp-action="Index">DetalleFactura</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Factura" asp-action="Index">Facturas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="FormaPago" asp-action="Index">Formas de pago</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="DetalleOrdenCompra" asp-action="Index">DetalleOrdenCompra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="OrdenCompra" asp-action="Index">Ordenes de compra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
-                        </li>
+                                                
                     </ul>
                 </div>
             </div>
@@ -67,10 +44,28 @@
         <div class="container">
             &copy; 2025 - Ing_Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+    
+    <div class="login-container" style="display: none;">
+        <form class="login-form"/>
+        <h2>Iniciar sesión de administrador</h2>
+        <div class="input-block">
+            <label for="username">Usuario</label>
+             <input type="text" id="username" name="username" placeholder="Ingresá tu clave de usuarioa" required>
+        </div>
+        <div class="input-block">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required>
+        </div>
+        <button type="submit">Iniciar sesión</button>
+        
+
+    </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/manual.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
