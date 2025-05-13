@@ -28,16 +28,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
-                    <ul class="=navbar-nav ms-auto list-unstyled">
+                    <ul class="navbar-nav ms-auto list-unstyled">
                         <li class="nav-item">
-                        <!-- para mi el error está en que lo metiste adentro del asp-action -->
-                            <a class="nav-link logo" asp-area="" >
-                                <img src="@Url.Content("~/Img/Logo_Starbucks.jpg")" alt="Vista admin" style="width: 45px; height: 45px; position:relative; top:6px" />
-                               <span class="hover-text" onclick="showLogin()">Vista administrador</span>
-                               
-                            </a>
-                        </li>
-                                                
+                            <button type="button" class="btn nav-link logo" onclick="showLogin()" style="background: none; border: none;">
+                                <img src="@Url.Content("~/Img/Logo_Starbucks.jpg")" alt="Vista admin" style="width: 45px; height: 45px; position:relative; top:6px"/>
+                                <span class="hover-text">Vista administrador</span>
+                            </button>
+                        </li>                                                
                     </ul>
                 </div>
             </div>
