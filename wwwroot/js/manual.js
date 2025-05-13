@@ -1,8 +1,8 @@
-function showLogin(){
-    const login = document.getElementsByClassName("login-container");
-    if (login.style.display === "none") {
-        login.style.display = "block";
+function showLogin() {
+    const loginContainer = document.getElementById("login-container");
+    if (loginContainer.style.display === "none" || loginContainer.style.display === "") {
+        loginContainer.style.display = "block"; // Muestra el formulario
     } else {
-        login.style.display = "none";
+        loginContainer.style.display = "none"; // Oculta el formulario
     }
 }

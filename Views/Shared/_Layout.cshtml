@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ing_Soft.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/manual.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -26,9 +27,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                    </ul>
+                    <ul class="=navbar-nav ms-auto list-unstyled">
                         <li class="nav-item">
                         <!-- para mi el error está en que lo metiste adentro del asp-action -->
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="showLogin()">Vista admin</a>
+                            <a class="nav-link logo" asp-area="" >
+                                <img src="@Url.Content("~/Img/Logo_Starbucks.jpg")" alt="Vista admin" style="width: 45px; height: 45px; position:relative; top:6px" />
+                               <span class="hover-text" onclick="showLogin()">Vista administrador</span>
+                               
+                            </a>
                         </li>
                                                 
                     </ul>
@@ -47,19 +54,19 @@
             &copy; 2025 - Ing_Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     
-    <div class="login-container" style="display: none;">
-        <form class="login-form"/>
+    <div id="login-container">
+        <form class="login-form">
         <h2>Iniciar sesión de administrador</h2>
         <div class="input-block">
             <label for="username">Usuario</label>
-             <input type="text" id="username" name="username" placeholder="Ingresá tu clave de usuarioa" required>
+             <input type="text" id="username" name="username" placeholder="Ingresá tu clave de usuario" required>
         </div>
         <div class="input-block">
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required>
         </div>
         <button type="submit">Iniciar sesión</button>
-        
+        </form>
 
     </div>
 
