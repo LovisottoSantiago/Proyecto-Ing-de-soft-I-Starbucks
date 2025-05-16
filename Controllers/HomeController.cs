@@ -15,13 +15,13 @@ namespace Ing_Soft.Controllers
 
         public IActionResult Index()
         {
-            HttpContext.Session.Clear();
+            HttpContext.Session.Clear(); // Para limpiar la sesión
             return View();
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            return View(); 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -33,20 +33,38 @@ namespace Ing_Soft.Controllers
 
         // Para el login
         [HttpPost]
-        public IActionResult Login(string rol)
-        {
-            HttpContext.Session.SetString("Rol", rol);
-            if (rol == "Administrador")
-            {
-                return RedirectToAction("Index", "Producto");
-            }
-            else if (rol == "Usuario")
-            {
-                return RedirectToAction("Index", "Cliente");
-            }
 
-            return RedirectToAction("Index");
+        public IActionResult Login(string usuario, string password)
+        {
+            var rutaJson = Path.Combine(Directory.GetCurrentDirectory(), "Enviroment", "passwords.json");
+
+                if (!System.IO.File.Exists(rutaJson))
+                {
+                    TempData["Error"] = "Archivo de contraseñas no encontrado.";
+                    return RedirectToAction("Index", "Home");
+                }
+
+                var json = System.IO.File.ReadAllText(rutaJson);
+
+                using var doc = System.Text.Json.JsonDocument.Parse(json);
+                var root = doc.RootElement;
+
+                foreach (var user in root.EnumerateArray())
+                {
+                    var usr = user.GetProperty("usuario").GetString();
+                    var pwd = user.GetProperty("password").GetString();
+
+                    if (usr == usuario && pwd == password)
+                    {
+                        Console.WriteLine("Usuario correcto");
+                        HttpContext.Session.SetString("Rol", "Administrador");
+                        return RedirectToAction("Index", "Producto");
+                    }
+                }
+            TempData["Error"] = "Usuario o contraseña incorrectos";
+            return RedirectToAction("Index", "Home");
         }
+        
 
         public IActionResult AccesoDenegado()
         {

@@ -6,5 +6,6 @@ bin/
 obj/
 .vs/
 .fake/
+Enviroment/
 
 # git rm -r --cached bin/ obj/ .vs/ .fake/ appsettings.json appsettings.Development.json

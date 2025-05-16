@@ -6,3 +6,8 @@ function showLogin() {
         loginContainer.style.display = "none"; // Oculta el formulario
     }
 }
+
+function ver(){
+   navbar.style.backgroundColor = "black";
+}
+
