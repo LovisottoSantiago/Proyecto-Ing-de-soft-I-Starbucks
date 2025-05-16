@@ -36,6 +36,7 @@
     max-height: 14rem;
     display: flex;
     padding: 10px;
+    object-fit: cover;
 }
 
 .titulo-arriba{
