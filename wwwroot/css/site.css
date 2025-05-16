@@ -96,6 +96,7 @@ input[type="text"],
   display: block;
   opacity: 1; 
   transform: translateX(-50%) translateY(0); 
+  max-width: 5rem;
 }
 
 .hover-text:hover{
@@ -128,6 +129,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
+    scrollbar-width: none;
 }
 .main-container {
     min-height: 100%;
@@ -141,9 +143,12 @@ footer .container{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.5rem 0 1.5rem 0;
 }
+
 footer .container h5{
   font-size: 1rem;
+  margin-bottom: -0.5rem;
 }
 
 .container-fluid{
@@ -181,4 +186,18 @@ footer .container h5{
 }
 .navbar-nav .btn{
   padding-bottom: 2rem;
+}
+
+.close-button {
+  position: relative;
+  float: right;
+}
+
+
+.container-fluid {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 0 2rem;
 }
