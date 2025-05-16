@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ing_Soft.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/manual.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&family=Sansita+Swashed:wght@300..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid" id="navbar">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ing_Soft</a>
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">El Mejor</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,10 +25,10 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <!-- OJO, puse logout para probar, es index acá -->
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Home</a> 
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Logout">INICIO</a> 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">PRIVACY</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto list-unstyled">
@@ -34,7 +37,7 @@
                                 <img src="@Url.Content("~/Img/Logo_Starbucks.jpg")" alt="Vista admin" style="width: 45px; height: 45px; position:relative; top:6px"/>
                                 <span class="hover-text">Vista administrador</span>
                             </button>
-                        </li>                                                
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +51,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - Ing_Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <h5>&copy; 2025 - Ing_Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></h5>
+            <h5>Enlace al <a href="https://github.com/LovisottoSantiago/Proyecto-Ing-de-soft-I-Starbucks">repositorio</a></h5>
         </div>
     
     <div id="login-container">

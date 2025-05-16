@@ -1,0 +1,66 @@
+.text-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%;
+    margin-left: 4rem;
+}
+.Cuerpo{
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: start;
+    height: 100%;
+    margin-top: 7rem;
+}
+.Logo{
+    justify-content: center;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.Logo img{
+    max-width: 40rem;
+    max-height: 40rem;
+}
+.imagenes{
+    padding-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.Foto{
+    display: flex;
+}
+.Foto img{
+    max-width: 14rem;
+    max-height: 14rem;
+    display: flex;
+    padding: 10px;
+}
+
+.titulo-arriba{
+    font-family: "Lexend Zetta", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: bold;
+    font-size: 2em;
+}
+.titulo-abajo{
+    font-family: "Sansita Swashed", system-ui;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: bold;
+    font-size: 6em;
+}
+<!--
+.botonhomeabajo{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.botonhomeabajo a{
+    text-decoration: none;
+    background-color: none;
+    font-size: 3rem;
+}
+-->

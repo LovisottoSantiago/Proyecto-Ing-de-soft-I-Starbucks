@@ -1,17 +1,36 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Proyecto Starbucks UNAJ</h1>
-    <img src="https://media.istockphoto.com/id/1310936055/es/foto/logotipo-de-la-marca-starbucks-coffee-shop-sin-personas.jpg?s=612x612&w=0&k=20&c=M13tc45gzXbdvtIR1jye6YwbL-95UctUU8NyHdgBENY=" alt="Logo de Starbucks" style="max-width: 90%; margin: 20px 0;">
-    <p>Enlace al <a href="https://github.com/LovisottoSantiago/Proyecto-Ing-de-soft-I-Starbucks">repositorio</a>.</p>
+ <link rel="stylesheet" href="~/css/Home.css" asp-append-version="true" />
+<section class="Cuerpo">
+<div class="text-center"> 
+    <section class="titulo-cafeteria">
+        <h2 class="titulo-arriba">CAFETERÍA</h2>
+        <h1 class="titulo-abajo">El Mejor</h1>
+    </section>
+    <div class="imagenes">
+       <div class="Foto"><img src="https://i.imgur.com/EFOmTtp.png" alt="medialunas" > </div>
+       <div class="Foto"><img src="https://i.imgur.com/ACVLhl1.jpeg" alt="Tostado "></div>
+       <div class="Foto"><img src="https://i.imgur.com/kiGnXiw.jpeg" alt="Cafe negro"></div>
+       <div class="Foto"><img src="https://i.imgur.com/7VG7JRv.jpeg" alt="Batido"></div>
+    </div>
+    <!--<div class="botonhomeabajo">
+        <a asp-controller="Home" asp-action="About" class="btn btn-primary">Menú</a>
+    </div>-->
+</div>
+<div class="Logo">   
+    <img src="https://i.imgur.com/g9fLXAH.png" alt="Cafe gigante">
 </div>
 
+</section>
+
+<!--
+ <p>Enlace al <a href="https://github.com/LovisottoSantiago/Proyecto-Ing-de-soft-I-Starbucks">repositorio</a>.</p>
 <div style="margin-top: 30px;">
-    <h3>Iniciar sesión como:</h3>
+<h3>Iniciar sesión como:</h3>
     <form asp-controller="Home" asp-action="Login" method="post" style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
         <button type="submit" name="rol" value="Usuario" class="btn btn-success">Usuario</button>
         <button type="submit" name="rol" value="Administrador" class="btn btn-primary">Administrador</button>
     </form>
 </div>
+-->
