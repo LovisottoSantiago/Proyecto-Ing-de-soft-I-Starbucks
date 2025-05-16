@@ -92,8 +92,6 @@ input[type="text"],
       outline: none;
     }
 
-    
-
 .nav-item:hover .hover-text {
   display: block;
   opacity: 1; 
@@ -166,7 +164,7 @@ footer .container h5{
   font-size: 2rem;
   color:antiquewhite;
 }
-.container-fluid .navbar-nav .nav-item .nav-link{
+.container-fluid .navbar-nav .nav-link{
   font-family: "Lexend Zetta", sans-serif;
   font-optical-sizing: auto;
   font-weight: auto;
