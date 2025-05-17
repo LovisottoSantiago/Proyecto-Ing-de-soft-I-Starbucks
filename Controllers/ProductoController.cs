@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Ing_Soft.Data;
 using Ing_Soft.Models;
 using Ing_Soft.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ing_Soft.Controllers
 {
-    [RolAuthorize("Administrador")]
+    // [RolAuthorize("Administrador")]
     public class ProductoController : Controller
     {
         private readonly AppDbContext _context;
@@ -22,12 +23,14 @@ namespace Ing_Soft.Controllers
         }
 
         // GET: Producto
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Producto.ToListAsync());
         }
 
         // GET: Producto/Details/5
+        [RolAuthorize("Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,6 +49,7 @@ namespace Ing_Soft.Controllers
         }
 
         // GET: Producto/Create
+        [RolAuthorize("Administrador")]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +60,7 @@ namespace Ing_Soft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RolAuthorize("Administrador")]
         public async Task<IActionResult> Create([Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl")] Producto producto)
         {
             if (ModelState.IsValid)
@@ -68,6 +73,7 @@ namespace Ing_Soft.Controllers
         }
 
         // GET: Producto/Edit/5
+        [RolAuthorize("Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +94,7 @@ namespace Ing_Soft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RolAuthorize("Administrador")]
         public async Task<IActionResult> Edit(int id, [Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl")] Producto producto)
         {
             if (id != producto.ID_Producto)
@@ -119,6 +126,7 @@ namespace Ing_Soft.Controllers
         }
 
         // GET: Producto/Delete/5
+        [RolAuthorize("Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,6 +147,7 @@ namespace Ing_Soft.Controllers
         // POST: Producto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [RolAuthorize("Administrador")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var producto = await _context.Producto.FindAsync(id);
@@ -151,6 +160,7 @@ namespace Ing_Soft.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [RolAuthorize("Administrador")]
         private bool ProductoExists(int id)
         {
             return _context.Producto.Any(e => e.ID_Producto == id);
