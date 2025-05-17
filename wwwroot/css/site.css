@@ -3,13 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-html {
-  font-size: 14px;
-}
+  html {
+    font-size: 16px;
+ }
 
 .nav-item {
   position: relative;
+align-items: center;
+
 }
 
 .nav-link.logo{
@@ -20,7 +21,7 @@ html {
   position: absolute;
   top: 50px;
   left: 50%;
-  background-color: #fff;
+  background-color: #ffffff;
   color: #000;
   padding: 3px 5px; 
   border: 1px solid #ccc;
@@ -38,7 +39,7 @@ html {
   margin-top: 6px;
   cursor: pointer;;
 }
-
+/* ACA TENGO QUE LABURAR YO */
 #login-container {
   position: fixed;
   top: 50%;
@@ -59,8 +60,8 @@ html {
   margin-bottom: 20px;
   color: #00704a;
 }
+
 #login-container button{
-  background-color: #00704a;
       color: white;
       border: none;
       padding: 12px 20px;
@@ -96,6 +97,7 @@ input[type="text"],
   display: block;
   opacity: 1; 
   transform: translateX(-50%) translateY(0); 
+  max-width: 5rem;
 }
 
 .hover-text:hover{
@@ -107,11 +109,38 @@ input[type="text"],
   right: 0; 
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   html {
-    font-size: 16px;
-  }
+  font-size: 14px;
 }
+  .navbar{
+    width: 100%;
+  }
+  .navbar-collapse{
+      display: flex;
+      width: auto;
+      justify-content: center;
+      flex-direction: column;
+      align-items: end;
+  }
+  .navbar-nav{
+    width: 70%;
+  display: flex;
+  justify-content: center;
+  background-color: #574632;
+}
+.nav-link{
+  display: flex;
+  justify-content: center;
+
+}
+.btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+  }
+
 
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -128,6 +157,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
+    scrollbar-width: none;
 }
 .main-container {
     min-height: 100%;
@@ -136,14 +166,21 @@ html, body {
     flex-direction: column;
     background-color: antiquewhite;
 }
+footer{
+  background-color: antiquewhite;
+}
 
 footer .container{
   display: flex;
+  background-color: antiquewhite;
   justify-content: space-between;
   align-items: center;
+  padding: 1.5rem 0 1.5rem 0;
 }
+
 footer .container h5{
   font-size: 1rem;
+  margin-bottom: -0.5rem;
 }
 
 .container-fluid{
@@ -181,4 +218,18 @@ footer .container h5{
 }
 .navbar-nav .btn{
   padding-bottom: 2rem;
+}
+
+.close-button {
+  position: relative;
+  float: right;
+}
+
+
+.container-fluid {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 0 2rem;
 }

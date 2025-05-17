@@ -64,3 +64,32 @@
     font-size: 3rem;
 }
 -->
+
+@media (max-width: 768px) {
+    .Logo {
+        display: none;
+    } 
+    .text-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 100%;
+        margin-left: 0rem;
+}
+
+    .titulo-arriba{
+    font-family: "Lexend Zetta", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: bold;
+    font-size: 2em;
+}
+.titulo-abajo{
+    font-family: "Sansita Swashed", system-ui;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: bold;
+    font-size: 6em;
+}
+
+}
