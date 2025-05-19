@@ -80,3 +80,69 @@ div#carta-container {
     background-color: #9e6b58;
     transform: scale(1.05);
 }
+
+.filtro-categorias {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.filtro-categorias label {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 10px;
+    color: #4b4b4b;
+}
+
+#select-categoria {
+    padding: 10px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fdfdfd;
+    color: #333;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
+    cursor: pointer;
+}
+
+#select-categoria:hover {
+    border-color: #b5816c;
+    box-shadow: rgba(181, 129, 108, 0.2) 0px 4px 12px;
+}
+
+#select-categoria:focus {
+    outline: none;
+    border-color: #b5816c;
+    box-shadow: 0 0 0 3px rgba(181, 129, 108, 0.2);
+}
+
+.titulo-carta p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: #2e2e2e;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+}
+
+.precio-carta p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #b5816c;
+    margin: 4px 0;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+}
+
+.categoria-carta p {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 4px 0 0 0;
+    font-style: italic;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+}
+
+.info-carta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
