@@ -51,7 +51,7 @@ align-items: center;
   border: 1px solid #ccc;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 40px 30px;
+  padding: 0px 30px 20px 30px;
   z-index: 1000;
   display: none; 
   text-align: center;
@@ -79,6 +79,16 @@ align-items: center;
 
 #login-container button:hover{
   background-color: #012c1c;
+}
+
+
+#login-container .close-button{
+justify-self: end;
+
+}
+
+#login-container .close-button button{
+padding: 50%;
 }
 
 input[type="text"],
@@ -159,7 +169,7 @@ input[type="text"],
     border: 1px solid #ccc;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 4rem 4rem;
+    padding: 0rem 2rem 2rem 2rem;
     z-index: 1000;
     display: none;
     text-align: center;
@@ -199,10 +209,13 @@ input[type="text"], input[type="password"] {
   color: #00704a;
 }
 
-.close-button {
-  position: relative;
-  float: right;
+#login-container .close-button{
+ justify-self: end;
+ 
+}
 
+#login-container .close-button button{
+padding: 50%;
 }
 
   }
@@ -284,13 +297,6 @@ footer .container h5{
 .navbar-nav .btn{
   padding-bottom: 2rem;
 }
-
-.close-button {
-  position: relative;
-  float: right;
-
-}
-
 
 .container-fluid {
   display: flex;

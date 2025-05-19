@@ -59,19 +59,28 @@
     <!-- ACA TENGO QUE LABURAR YO  -->
     
     <div id="login-container">
-        <button type="button" class="close-button" onclick="closeForm()">✖</button>
-        <form class="login-form" asp-action="Login" asp-controller="Home" method="post">
-        <h2>Iniciar sesión de administrador</h2>
+
+        <div class="close-button"> 
+            <button type="button" onclick="closeForm()">✖</button> </div>
+        <div>
+            <form class="login-form" asp-action="Login" asp-controller="Home" method="post">
+            <h2>Iniciar sesión de administrador</h2>
+        
         <div class="input-block">
             <label for="usuario">Usuario</label>
-             <input type="text" id="usuario" name="usuario" placeholder="Ingresá tu clave de usuario" required>
+            <input type="text" id="usuario" name="usuario" placeholder="Ingresá tu clave de usuario" required>
         </div>
+
         <div class="input-block">
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required>
         </div>
+        
         <button type="submit">Iniciar sesión</button>
-        </form>
+            
+            </form>
+        </div>
+       
     </div>
 
     </footer>
