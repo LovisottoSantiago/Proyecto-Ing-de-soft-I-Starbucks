@@ -6,6 +6,7 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Tienda.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ing_Soft.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/manual.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +31,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">PRIVACY</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link"  asp-area="" asp-controller="Tienda" asp-action="Index">VISTA DE TIENDA</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto list-unstyled">
@@ -61,7 +65,7 @@
     <div id="login-container">
 
         <div class="close-button"> 
-            <button type="button" onclick="closeForm()">✖</button> </div>
+            <button type="button" onclick="closeForm()">&times;</button> </div>
         <div>
             <form class="login-form" asp-action="Login" asp-controller="Home" method="post">
             <h2>Iniciar sesión de administrador</h2>

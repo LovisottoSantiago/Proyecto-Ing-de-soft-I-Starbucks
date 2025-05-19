@@ -31,6 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ImagenUrl)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -56,6 +59,9 @@
                 @* @Html.DisplayFor(modelItem => item.ImagenUrl) *@
                 <img src="@item.ImagenUrl" alt="Imagen del producto" style="max-height:80px;" />
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID_Producto">Details</a> |

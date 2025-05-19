@@ -5,11 +5,20 @@ namespace Ing_Soft.Controllers
 {
     public class TiendaController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _context;
 
-        public TiendaController(AppDbContext context)
+        public TiendaController(ILogger<HomeController> logger, AppDbContext context)
         {
+            _logger = logger;
             _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            var productos = _context.Producto
+                .ToList();
+            return View(productos);
         }
 
 

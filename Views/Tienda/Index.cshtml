@@ -1,0 +1,48 @@
+@model List<Ing_Soft.Models.Producto>
+
+@{
+    ViewData["Title"] = "Vista";
+}
+
+<h1>Tienda</h1>
+
+<div class="contenedor-papu">
+    <div class="filtro-categorias">
+    <label for="select-categoria">Filtrar por categoría:</label>
+    <select id="select-categoria">
+        <option value="todos">Todos</option>
+        <option value="Bebidas Calientes">Bebidas calientes</option>
+        <option value="Facturas">Facturas</option>
+    </select>
+        <div id="carta-container">
+            @foreach (var producto in Model)
+            {
+                <div class="carta-rodeo" data-categoria="@producto.Categoria">
+                    <div class="carta">
+                        <div class="info-carta">   
+                            <div class="titulo-carta">
+                                <p>@producto.Nombre</p>                    
+                            </div>
+                            <div class="precio-carta">
+                                <p>@producto.PrecioUnitario</p>
+                            </div>                     
+                            <div class="categoria-carta">
+                                <p>@producto.Categoria</p>
+                            </div>                 
+                            <div class="boton-agregar">
+                                <button>Agregar</button>
+                            </div>    
+                        </div>
+                        <div class="foto-carta">
+                            <div class="foto-carta2">
+                                <img src="@producto.ImagenUrl" class="imagen-carta">   
+                            </div>          
+                        </div>                    
+                    </div>
+                </div>
+
+            }
+        </div>
+</div>
+
+

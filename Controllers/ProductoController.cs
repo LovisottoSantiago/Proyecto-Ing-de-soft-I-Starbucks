@@ -61,7 +61,7 @@ namespace Ing_Soft.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RolAuthorize("Administrador")]
-        public async Task<IActionResult> Create([Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl")] Producto producto)
+        public async Task<IActionResult> Create([Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl,Categoria")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace Ing_Soft.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RolAuthorize("Administrador")]
-        public async Task<IActionResult> Edit(int id, [Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl,Categoria")] Producto producto)
         {
             if (id != producto.ID_Producto)
             {
