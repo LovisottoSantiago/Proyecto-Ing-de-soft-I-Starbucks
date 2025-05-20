@@ -17,3 +17,17 @@
     });
     
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cartas = document.querySelectorAll(".carta-rodeo");
+
+    cartas.forEach(carta => {
+        carta.addEventListener("click", function () {
+            // Opcional: quitar "activa" de todas las demás
+            cartas.forEach(c => c.classList.remove("activa"));
+            
+            // Agregar clase activa a la seleccionada
+            this.classList.add("activa");
+        });
+    });
+});
