@@ -7,50 +7,48 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ing_Soft.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap" rel="stylesheet">
 </head>
 <body> 
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ing_Soft</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">El Mejor</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 display:flex">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>                        
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Cobranza" asp-action="Index">Cobranzas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="DetalleFactura" asp-action="Index">DetalleFactura</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Factura" asp-action="Index">Facturas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="FormaPago" asp-action="Index">Formas de pago</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="DetalleOrdenCompra" asp-action="Index">DetalleOrdenCompra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="OrdenCompra" asp-action="Index">Ordenes de compra</a>
+                            <a class="nav-link" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
+                            <a class="nav-link" asp-area="" asp-controller="OrdenCompra" asp-action="Index">Ordenes de Compra</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="DetalleOrdenCompra" asp-action="Index">DetalleOrdenCompra</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Factura" asp-action="Index">Facturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="DetalleFactura" asp-action="Index">DetalleFactura</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Cobranza" asp-action="Index">Cobranzas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="FormaPago" asp-action="Index">Formas de pago</a>
+                        </li>
+                        <li class="nav-item" style="margin-left: auto;">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Salir del Modo Administrador</a>
                         </li>
                     </ul>
                 </div>
@@ -65,7 +63,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - Ing_Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <h5>&copy; 2025 - Ing. Software I - Grupo 7 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></h5>
+            <h5><a href="https://github.com/LovisottoSantiago/Proyecto-Ing-de-soft-I-Starbucks">Repositorio</a></h5>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
