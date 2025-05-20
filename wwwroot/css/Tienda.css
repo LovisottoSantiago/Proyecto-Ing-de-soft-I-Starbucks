@@ -35,6 +35,12 @@ div#carta-container {
     margin: 12px;
 }
 
+.carta-rodeo.activa .boton-agregar button {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 .carta {
     display: flex;
     justify-content: space-between;
@@ -76,14 +82,17 @@ div#carta-container {
 }
 
 .boton-agregar button {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     padding: 8px 16px;
-    background-color: #00754a; /* color suave */
+    background-color: #00754a;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
 }
 
 .boton-agregar button:hover {
