@@ -7,6 +7,16 @@ div#carta-container {
     align-items: stretch;
 }
 
+.tienda-cartel{
+    font-family: "Lexend Zetta", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: bold;
+    font-size: 3.5rem;
+    color:#00754a;
+    padding: 4.5rem 0rem 0rem 0rem;
+    justify-self: center;
+}
 .contenedor-papu {
     display: flex;
     flex-direction: row;
@@ -128,7 +138,7 @@ div#carta-container {
 .precio-carta p {
     font-size: 1rem;
     font-weight: 500;
-    color: #b5816c;
+    color: #225245;
     margin: 4px 0;
     font-family: 'Segoe UI', 'Poppins', sans-serif;
 }

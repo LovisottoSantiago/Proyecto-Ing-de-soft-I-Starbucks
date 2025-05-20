@@ -155,6 +155,8 @@ input[type="text"],
   display: flex;
   justify-content: center;
 }
+
+
   }
 
 /*estilado  del login responsive */
@@ -254,7 +256,7 @@ footer .container{
   background-color: #f9f9f9;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0 1.5rem 0;
+  padding: 1rem 0 1.5rem 0;
 }
 
 footer .container h5{
@@ -307,3 +309,10 @@ footer .container h5{
   padding: 0 1rem 0 2rem;
 }
 
+.carteles-admin{
+    
+    font-size: 3.5rem;
+    color:#00754a;
+    padding: 4.5rem 0rem 0rem 0rem;
+    justify-self: center;
+}

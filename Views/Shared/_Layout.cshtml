@@ -30,10 +30,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Logout">INICIO</a> 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">PRIVACY</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link"  asp-area="" asp-controller="Tienda" asp-action="Index">VISTA DE TIENDA</a>
+                            <a class="nav-link"  asp-area="" asp-controller="Tienda" asp-action="Index">TIENDA</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto list-unstyled">
@@ -56,19 +53,16 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            <h5>&copy; 2025 - Ing_Soft - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></h5>
-            <h5>Enlace al <a href="https://github.com/LovisottoSantiago/Proyecto-Ing-de-soft-I-Starbucks">repositorio</a></h5>
+            <h5>&copy; 2025 - Ing. Software I - Grupo 7 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></h5>
+            <h5><a href="https://github.com/LovisottoSantiago/Proyecto-Ing-de-soft-I-Starbucks">Repositorio</a></h5>
         </div>
-
-    <!-- ACA TENGO QUE LABURAR YO  -->
     
     <div id="login-container">
-
         <div class="close-button"> 
             <button type="button" onclick="closeForm()">&times;</button> </div>
         <div>
             <form class="login-form" asp-action="Login" asp-controller="Home" method="post">
-            <h2>Iniciar sesión de administrador</h2>
+            <h2>Iniciar sesión de Administrador</h2>
         
         <div class="input-block">
             <label for="usuario">Usuario</label>
@@ -84,7 +78,6 @@
             
             </form>
         </div>
-       
     </div>
 
     </footer>
