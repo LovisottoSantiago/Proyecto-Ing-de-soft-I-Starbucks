@@ -76,9 +76,6 @@
 
 
 
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -91,7 +88,7 @@ let carritoVisible = false;
 function actualizarCarrito() {
     const ids = carrito.map(item => item.id);
     $.ajax({
-        url: '/Tienda/CarritoParcial',
+        url: '/Insumos/CarritoParcial',
         type: 'POST',
         data: { ids: ids },
         traditional: true,
@@ -129,8 +126,8 @@ $('#busqueda').on('input', function () {
 function actualizarCantidadesCarrito() {
     carrito.forEach(item => {
         $(`#cantidad-carrito-${item.id}`).text(item.cantidad);
-        const precioUnitario = parseFloat($(`#precio-carrito-${item.id}`).text());
-        const total = (precioUnitario * item.cantidad).toFixed(2);
+        const PrecioCosto = parseFloat($(`#precio-carrito-${item.id}`).text());
+        const total = (PrecioCosto * item.cantidad).toFixed(2);
         $(`#total-carrito-${item.id}`).text(total);
     });
 }

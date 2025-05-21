@@ -19,45 +19,52 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1 display:flex">
+                    
+                    <div class="nav-izquierda-items">
+                        <!-- Dropdown: Compras -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Compras</a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="OrdenCompra" asp-action="Index">Órdenes de Compra</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a></li>
+                                    <!-- <li><a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a></li> -->
+                                    <!-- <li><a class="dropdown-item" asp-area="" asp-controller="Factura" asp-action="Index">Facturas</a></li> -->
+                                    <!-- <li><a class="dropdown-item" asp-area="" asp-controller="Cobranza" asp-action="Index">Cobranzas</a></li> -->
+                                    <!-- <li><a class="dropdown-item" asp-area="" asp-controller="FormaPago" asp-action="Index">Formas de Pago</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <!-- Dropdown: Ventas -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ventas</a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <!-- <li><a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a></li> -->
+                                    <!-- <li><a class="dropdown-item" asp-area="" asp-controller="OrdenCompra" asp-action="Index">Órdenes de Compra</a></li> -->
+                                    <!-- <li><a class="dropdown-item" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a></li> -->
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Factura" asp-action="Index">Facturas</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Cobranza" asp-action="Index">Cobranzas</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="FormaPago" asp-action="Index">Formas de Pago</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Sección derecha -->
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
+                            <a class="nav-link" asp-area="" asp-controller="Insumos" asp-action="Index">Encargar Insumos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="OrdenCompra" asp-action="Index">Ordenes de Compra</a>
-                        </li>
-                        <!-- 
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="DetalleOrdenCompra" asp-action="Index">DetalleOrdenCompra</a>
-                        </li>
-                        -->
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Factura" asp-action="Index">Facturas</a>
-                        </li>
-                        <!-- 
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="DetalleFactura" asp-action="Index">DetalleFactura</a>
-                        </li>
-                        -->
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Cobranza" asp-action="Index">Cobranzas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="FormaPago" asp-action="Index">Formas de pago</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Insumos" asp-action="Index">Encargar insumos</a>
-                        </li>
-                        <li class="nav-item" style="margin-left: auto;">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Salir del Modo Administrador</a>
                         </li>
                     </ul>
+
+
                 </div>
             </div>
         </nav>
@@ -80,3 +87,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+

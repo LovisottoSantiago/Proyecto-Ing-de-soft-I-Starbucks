@@ -113,6 +113,16 @@ function actualizarCarrito() {
     });
 }
 
+$('#busqueda').on('input', function () {
+    const texto = $(this).val().toLowerCase().trim();
+
+    $('#carta-container .carta-rodeo').each(function () {
+        const nombre = $(this).find('.titulo-carta p').text().toLowerCase();
+        $(this).toggle(nombre.includes(texto));
+    });
+});
+
+
 function actualizarCantidadesCarrito() {
     carrito.forEach(item => {
         $(`#cantidad-carrito-${item.id}`).text(item.cantidad);

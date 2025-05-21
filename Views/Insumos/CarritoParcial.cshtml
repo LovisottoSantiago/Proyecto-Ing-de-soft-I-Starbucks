@@ -20,12 +20,12 @@
                         string nombre = producto.Nombre.Length > 25 ? producto.Nombre.Substring(0, 22) + "..." : producto.Nombre;
                         <tr class="fila-carrito">
                             <td>@nombre</td>
-                            <td id="precio-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
+                            <td id="precio-carrito-@producto.ID_Producto">@producto.PrecioCosto</td>
                             <td id="cantidad-carrito-2">
                             1
                             <img src="@Url.Content("~/Img/9143985.png")" class="editar-cantidad" alt="Editar cantidad" />
                             </td>
-                            <td id="total-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
+                            <td id="total-carrito-@producto.ID_Producto">@producto.PrecioCosto</td>
                             <td class="eliminar">
                                 <button class="eliminar-producto" data-id="@producto.ID_Producto">X</button>
                             </td>

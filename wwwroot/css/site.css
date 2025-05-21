@@ -293,3 +293,11 @@ footer .container h5{
   margin: 1rem;
   border-color: #dddddd;
 }
+
+
+.nav-izquierda-items {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
