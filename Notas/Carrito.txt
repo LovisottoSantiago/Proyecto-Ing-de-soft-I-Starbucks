@@ -1,0 +1,62 @@
+# Notas: Creación del carrito de compras
+
+1. Crear la vista parcial de carrito de compras en /Views/Tienda/CarritoParcial.cshtml
+
+2. Modificar TiendaController y agregar el metodo que devuelve la vista parcial
+
+        [HttpPost]
+        public IActionResult CarritoParcial(List<int>? ids)
+        {
+            var productos = ids != null
+                ? _context.Producto.Where(p => ids.Contains(p.ID_Producto)).ToList()
+                : new List<Producto>();
+
+            return PartialView("CarritoParcial", productos);
+        }
+    
+    !Este método recibe una lista de IDs y devuelve los productos que coinciden
+
+
+3. Agregar un div donde va a estar el carrito (en el Index de Tienda)
+
+    <div id="carrito-container">
+        @{ await Html.RenderPartialAsync("CarritoParcial", new List<Producto>()); }
+    </div>
+
+
+4. Darle funcionalidad con JS (agregar carritos a una lista y pasarle esa lista a el controlador)
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> !Importante agregar esto para usar jquey
+    
+    <script>
+            let carrito = [];
+
+            function actualizarCarrito() {
+                $.ajax({
+                    url: '/Tienda/CarritoParcial',
+                    type: 'POST',
+                    data: { ids: carrito },
+                    traditional: true,
+                    success: function (data) {
+                        $('#carrito-container').html(data);
+                    }
+                });
+            }
+
+            $(document).ready(function () {
+                $('.boton-agregar button').click(function () {
+                    const id = parseInt($(this).closest('.carta-rodeo').data('id'));
+
+                    const cantidadStr = prompt("¿Cuántas unidades querés agregar?", "1");
+                    const cantidad = parseInt(cantidadStr);
+
+                    if (!carrito.includes(id)) {
+                        carrito.push(id);
+                        actualizarCarrito();
+                    }
+                });
+            });
+    </script>
+
+
+5

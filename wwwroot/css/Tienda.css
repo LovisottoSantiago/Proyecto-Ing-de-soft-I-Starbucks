@@ -7,6 +7,11 @@ div#carta-container {
     align-items: stretch;
 }
 
+::selection {
+    color: #f9f9f9;
+    background: #005f3a;
+}
+
 .tienda-cartel{
     font-family: "Lexend Zetta", sans-serif;
     font-optical-sizing: auto;
@@ -40,6 +45,20 @@ div#carta-container {
     visibility: visible;
     transform: translateY(0);
 }
+
+.boton-agregar .cantidad-select {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carta-rodeo.activa .boton-agregar .cantidad-select {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 
 .carta {
     display: flex;
@@ -78,7 +97,14 @@ div#carta-container {
     object-fit: cover;
 }
 .boton-agregar {
-    margin-top: 8px;
+    margin-top: .5rem;
+    display: flex;
+    flex-wrap: unwrap;
+    column-gap: 0.5rem;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .boton-agregar button {
@@ -139,6 +165,7 @@ div#carta-container {
 .titulo-carta p {
     font-size: 1.2rem;
     font-weight: 600;
+    text-align: left;
     margin: 0;
     color: #2e2e2e;
     font-family: 'Segoe UI', 'Poppins', sans-serif;
@@ -164,4 +191,143 @@ div#carta-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    padding-left: 0.5rem;
+}
+
+
+.cantidad-select {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fdfdfd;
+    color: #333;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
+    cursor: pointer;
+}
+
+.cantidad-select:hover {
+    border-color: #00754a;
+    box-shadow: rgba(0, 117, 74, 0.2) 0px 4px 12px;
+}
+
+.cantidad-select:focus {
+    outline: none;
+    border-color: #00754a;
+    box-shadow: 0 0 0 3px rgba(0, 117, 74, 0.2);
+}
+
+
+
+/* Carrito de compras */
+#carrito-container {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    background-color: #005f3a;
+    width: auto;
+    max-width: 100%;
+    max-height: 25rem;
+    padding: 1.5rem 2rem 2rem 2rem;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+}
+
+#carrito-container.visible {
+    display: block;
+    transform: translate(-50%, 25%);
+    opacity: 1;
+}
+
+div#contenido-carrito {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 30rem;
+    height: auto;
+    align-items: flex-start;
+}
+
+
+div#carrito {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    color: white;
+    align-items: center;
+    width: 30rem;
+}
+
+div#carrito-container .table {
+    color: white;
+}
+
+
+button#cerrar-carrito {
+    font-size: 2rem;
+    margin: 0px 10px 0px 0px;
+}
+
+.carrito-comprar-container {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+#boton-comprar {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    background-color: #00754a;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#boton-comprar:hover {
+    background-color: #004d33;
+}
+
+
+.carrito-comprar-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.nombre-producto {
+    max-width: 200px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.carrito-tabla-scroll {
+    max-height: 12.5rem;
+    height: 12.5rem;
+    overflow-y: auto;
+    scrollbar-width: none; 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    -ms-overflow-style: none; 
+    width: 100%;
+}
+
+.carrito-tabla-scroll::-webkit-scrollbar {
+    display: none;
 }

@@ -1,0 +1,45 @@
+@model List<Ing_Soft.Models.Producto>
+
+<div id="carrito">
+    <h3>Carrito</h3>
+    <div class="carrito-tabla-scroll">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var producto in Model)
+                    {
+                        string nombre = producto.Nombre.Length > 25 ? producto.Nombre.Substring(0, 22) + "..." : producto.Nombre;
+                        <tr>
+                            <td>@nombre</td>
+                            <td id="precio-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
+                            <td id="cantidad-carrito-@producto.ID_Producto">1</td> <!-- Se actualizará dinámicamente -->
+                            <td id="total-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="4">El carrito está vacío</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+        <div class="carrito-comprar-container">
+            <button id="boton-comprar">Comprar</button>
+        </div>
+
+
+</div>
+
+

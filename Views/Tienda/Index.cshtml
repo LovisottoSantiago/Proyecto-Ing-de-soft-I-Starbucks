@@ -6,7 +6,14 @@
 
 <h2 class="tienda-cartel">TIENDA</h2>
 
+<button id="boton-carrito" style="position: fixed; top: 100px; right: 100px; z-index: 1000; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+    <img src="@Url.Content("~/Img/carrito.png")" alt="Carrito" style="width:32px; height:32px;" />
+    <a href="#" id="contador-carrito" style="color: black; text-decoration: none; font-weight: bold;">0</a>
+</button>
+
+
 <div class="contenedor-papu">
+
     <div class="filtro-categorias">
     <label for="select-categoria">Filtrar por categoría:</label>
     <select id="select-categoria">
@@ -18,21 +25,27 @@
         <div id="carta-container">
             @foreach (var producto in Model)
             {
-                <div class="carta-rodeo" data-categoria="@producto.Categoria">
+                <div class="carta-rodeo" data-categoria="@producto.Categoria" data-id="@producto.ID_Producto">
                     <div class="carta">
                         <div class="info-carta">   
                             <div class="titulo-carta">
                                 <p>@producto.Nombre</p>                    
                             </div>
                             <div class="precio-carta">
-                                <p>@producto.PrecioUnitario</p>
+                                <p>$ @producto.PrecioUnitario</p>
                             </div>                     
                             <div class="categoria-carta">
                                 <p>@producto.Categoria</p>
                             </div>                 
                             <div class="boton-agregar">
                                 <button>Agregar</button>
-                            </div>    
+                                <select id="cantidad-@producto.ID_Producto" class="cantidad-select">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
+                            </div>
                         </div>
                         <div class="foto-carta">
                             <div class="foto-carta2">
@@ -41,9 +54,128 @@
                         </div>                    
                     </div>
                 </div>
-
             }
         </div>
 </div>
 
+<div id="carrito-container">
+    <button id="cerrar-carrito" style="position:absolute; top:8px; right:10px; background:none; border:none; color:white; cursor:pointer;">&times</button>
+    <div id="contenido-carrito">
+        @{ await Html.RenderPartialAsync("CarritoParcial", new List<Producto>()); }
+    </div>
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+
+let carritoCerradoManualmente = false;
+let carrito = [];
+let carritoVisible = false;
+
+function actualizarCarrito() {
+    const ids = carrito.map(item => item.id);
+
+    $.ajax({
+        url: '/Tienda/CarritoParcial',
+        type: 'POST',
+        data: { ids: ids },
+        traditional: true,
+        success: function (data) {
+            $('#contenido-carrito').html(data);
+            actualizarCantidadesCarrito();
+            actualizarContador();
+
+            if (carrito.length > 0) {
+                if (!carritoVisible && !carritoCerradoManualmente) {
+                    $('#carrito-container').show();
+                    setTimeout(() => $('#carrito-container').addClass('visible'), 10);
+                    carritoVisible = true;
+                }
+            } else {
+                $('#carrito-container').slideUp();
+                carritoVisible = false;                
+            }
+        }
+    });
+}
+
+function actualizarCantidadesCarrito() {
+    carrito.forEach(item => {
+        $(`#cantidad-carrito-${item.id}`).text(item.cantidad);
+        const precioUnitario = parseFloat($(`#precio-carrito-${item.id}`).text());
+        const total = (precioUnitario * item.cantidad).toFixed(2);
+        $(`#total-carrito-${item.id}`).text(total);
+    });
+}
+
+function actualizarContador() {
+    const cantidadFilas = carrito.length;
+    $('#contador-carrito').text(cantidadFilas);
+
+    const $boton = $('#boton-carrito');
+    if (cantidadFilas === 0) {
+        $boton.css('opacity', '0.5');
+        $boton.css('cursor', 'not-allowed');
+    } else {
+        $boton.css('opacity', '1');
+        $boton.css('cursor', 'pointer');
+    }
+}
+
+$(document).ready(function () {
+    actualizarContador();
+    $('#boton-carrito').click(function (e) {
+        if (carrito.length === 0) {
+            e.preventDefault();
+            return;
+        }
+
+        const $carrito = $('#carrito-container');
+
+        if (carritoVisible) {
+            $carrito.removeClass('visible');
+            setTimeout(() => $carrito.hide(), 400);
+        } else {
+            $carrito.show();
+            setTimeout(() => $carrito.addClass('visible'), 10);
+        }
+
+        carritoVisible = !carritoVisible;
+        carritoCerradoManualmente = false;
+        actualizarContador();
+    });
+
+
+    $('#cerrar-carrito').click(function () {
+        $('#carrito-container').removeClass('visible');
+        setTimeout(() => $('#carrito-container').hide(), 400);
+        carritoVisible = false;
+        carritoCerradoManualmente = true;
+    });
+
+    $('.boton-agregar button').click(function () {
+        const $carta = $(this).closest('.carta-rodeo');
+        const id = parseInt($carta.data('id'));
+        const cantidadSeleccionada = parseInt($carta.find('.cantidad-select').val());
+
+        const itemExistente = carrito.find(item => item.id === id);
+
+        if (itemExistente) {
+            itemExistente.cantidad += cantidadSeleccionada;
+        } else {
+            carrito.push({ id: id, cantidad: cantidadSeleccionada });
+        }
+
+        actualizarCarrito();
+    });
+});
+
+</script>
 

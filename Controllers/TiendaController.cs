@@ -1,4 +1,5 @@
 using Ing_Soft.Data;
+using Ing_Soft.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ing_Soft.Controllers
@@ -31,6 +32,19 @@ namespace Ing_Soft.Controllers
         // Carrito() → muestra los productos agregados.
 
         // FinalizarCompra() → realiza la compra de los productos en el carrito, tiene relacion con DetalleFactura.
+
+
+        [HttpPost]
+        public IActionResult CarritoParcial(List<int>? ids)
+        {
+            var productos = ids != null
+                ? _context.Producto.Where(p => ids.Contains(p.ID_Producto)).ToList()
+                : new List<Producto>();
+
+            return PartialView("CarritoParcial", productos);
+        }
+
+
 
 
 
