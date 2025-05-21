@@ -3,7 +3,7 @@ div#carta-container {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: stretch;
 }
 
@@ -24,9 +24,9 @@ div#carta-container {
 }
 .contenedor-papu {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    padding: 3rem;
+    padding: 3rem 3rem 1.5rem 3rem;
     align-content: center;
     justify-content: center;
     align-items: center;
@@ -34,11 +34,13 @@ div#carta-container {
 
 .carta-rodeo {
     cursor: pointer;
-    display: flex;
-    align-items: stretch;
-    flex: 1 1 17%;
+    flex: 1 1 calc(25% - 24px); /* crece si hay espacio */
+    min-width: 20rem; /* no menos de esto */
+    max-width: calc(25% - 24px);
+    box-sizing: border-box;
     margin: 12px;
 }
+
 
 .carta-rodeo.activa .boton-agregar button {
     opacity: 1;
@@ -63,7 +65,8 @@ div#carta-container {
 .carta {
     display: flex;
     justify-content: space-between;
-    width: 100%; /* antes 100% */
+    width: 100%; 
+    height: 100%;
     padding: 12px;
     border: 1px solid rgb(219, 218, 222);
     border-radius: 6px;
@@ -129,7 +132,16 @@ div#carta-container {
 .filtro-categorias {
     width: 100%;
     text-align: center;
-    margin-bottom: 2rem;
+}
+
+.contenedor-inicio {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
 .filtro-categorias label {
@@ -311,7 +323,7 @@ div#carrito-container .table {
 .custom-badge {
     position: absolute;
     top: -5px;
-    right: -10px;
+    right: 3px;
     background-color: red;
     color: white;
     border-radius: 50%;
@@ -397,6 +409,12 @@ button#cerrar-carrito {
 }
 
 
+#img-carrito {
+    filter: invert(1);
+    margin-right: 1rem;
+}
+
+
 /* Responsive para celular */
 @media (max-width: 600px) {
     div#carta-container,
@@ -412,7 +430,7 @@ button#cerrar-carrito {
     }
   
     .carta {
-      width: 100%; 
+      width: 90%; 
       flex-direction: column;
       align-items: center;
       padding: 10px;
@@ -426,7 +444,8 @@ button#cerrar-carrito {
     }
   
     .info-carta {
-      padding-left: 0;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
       align-items: center;
       text-align: center;
     }
@@ -455,6 +474,9 @@ button#cerrar-carrito {
   
     .carta {
       padding: 8px;
+      width: 80%;
+      margin: 0 auto;
+      align-items: center;
     }
   
     .boton-agregar button {
@@ -462,5 +484,7 @@ button#cerrar-carrito {
       font-size: 0.8rem;
     }
   }
-
   
+  input#busqueda {
+    width: 25rem;
+}

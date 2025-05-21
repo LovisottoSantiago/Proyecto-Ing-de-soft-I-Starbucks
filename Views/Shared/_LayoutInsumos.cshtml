@@ -26,11 +26,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <!-- OJO, puse logout para probar, es index acá -->
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Logout">INICIO</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  asp-area="" asp-controller="Tienda" asp-action="Index">TIENDA</a>
+                            <a class="nav-link" asp-area="" asp-controller="Producto" asp-action="Index">Regresar</a> 
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto list-unstyled d-flex align-items-center" style="gap: 10px;">
@@ -40,13 +36,7 @@
         <span id="contador-carrito" class="custom-badge">0</span>
     </a>
 </li>
-                        <li class="nav-item">
-                            <button type="button" class="btn nav-link logo" onclick="showLogin()" style="background: none; border: none;">
-                                <img src="@Url.Content("~/Img/Logo_Starbucks.jpg")" alt="Vista admin" style="width: 45px; height: 45px; position:relative; top:6px"/>
-                                <span class="hover-text">Modo admin</span>
-                             </button>
-                        </li>
-                       
+                
                     </ul>
 
                 </div>
@@ -64,31 +54,8 @@
             <h5>&copy; 2025 - Ing. Software I - Grupo 7 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></h5>
             <h5><a href="https://github.com/LovisottoSantiago/Proyecto-Ing-de-soft-I-Starbucks">Repositorio</a></h5>
         </div>
-    
-    <div id="login-container">
-        <div class="close-button"> 
-            <button type="button" onclick="closeForm()">&times;</button> </div>
-        <div>
-            <form class="login-form" asp-action="Login" asp-controller="Home" method="post">
-            <h2>Iniciar sesión de Administrador</h2>
-        
-        <div class="input-block">
-            <label for="usuario">Usuario</label>
-            <input type="text" id="usuario" name="usuario" placeholder="Ingresá tu clave de usuario" required>
-        </div>
-
-        <div class="input-block">
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required>
-        </div>
-        
-        <button type="submit">Iniciar sesión</button>
-            
-            </form>
-        </div>
-    </div>
-
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -96,13 +63,7 @@
     @await RenderSectionAsync("Scripts", required: false)
 
 
-<script>
-    function closeForm() {
-        console.log("closeForm");
-        const loginContainer = document.getElementById("login-container");
-        loginContainer.style.display = "none";
-    }
-</script>
+
 
 
 </body>

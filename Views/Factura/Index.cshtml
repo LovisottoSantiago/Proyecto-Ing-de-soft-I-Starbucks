@@ -10,46 +10,49 @@
 <p style="text-align: center;">
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ID_Cliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ID_FormaPago)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <!-- Html.DisplayFor(modelItem => item.Fecha) --> 
-                @item.Fecha?.ToString("dd/MM/yyyy  HH:mm:ss")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID_Cliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID_FormaPago)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID_Factura">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID_Factura">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID_Factura">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="contenedor-tabla-general">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_Cliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_FormaPago)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <!-- Html.DisplayFor(modelItem => item.Fecha) --> 
+                    @item.Fecha?.ToString("dd/MM/yyyy  HH:mm:ss")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_Cliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_FormaPago)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID_Factura">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID_Factura">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID_Factura">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

@@ -10,83 +10,87 @@
 <p style="text-align: center;">
     <a asp-action="Create">Create New</a>
 </p>
-<div class="tablecontainer">
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID_Producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecioCosto)
-            </th>
-            <th>
-                PrecioVenta
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagenUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ID_Proveedor)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr style="vertical-align: middle;">
-            <td>
-                @Html.DisplayFor(modelItem => item.ID_Producto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrecioCosto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrecioUnitario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td style="text-align: center;">
-                @* @Html.DisplayFor(modelItem => item.ImagenUrl) *@
-                <img src="@item.ImagenUrl" alt="Imagen del producto" style="max-height:80px;" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categoria)
-            </td>            
-            <td>
-                @item.Proveedor?.Nombre
-            </td>            
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID_Producto">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID_Producto">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+<div class="contenedor-tabla-general">
+    <div class="tablecontainer">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID_Producto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecioCosto)
+                    </th>
+                    <th>
+                        PrecioVenta
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImagenUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Categoria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID_Proveedor)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr style="vertical-align: middle;">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_Producto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioCosto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioUnitario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td style="text-align: center;">
+                        @* @Html.DisplayFor(modelItem => item.ImagenUrl) *@
+                        <img src="@item.ImagenUrl" alt="Imagen del producto" style="max-height:80px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria)
+                    </td>            
+                    <td>
+                        @item.Proveedor?.Nombre
+                    </td>            
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID_Producto">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID_Producto">Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
 </div>

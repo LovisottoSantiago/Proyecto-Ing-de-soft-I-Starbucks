@@ -18,6 +18,7 @@
     
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const cartas = document.querySelectorAll(".carta-rodeo");
 
@@ -31,3 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+
+

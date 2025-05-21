@@ -1,44 +1,47 @@
 @model List<Ing_Soft.Models.Producto>
 
 @{
-    ViewData["Title"] = "Tienda";
-    Layout ="~/Views/Shared/_LayoutTienda.cshtml";
+    ViewData["Title"] = "Insumos";
+    Layout ="~/Views/Shared/_LayoutInsumos.cshtml"; // Usa el mismo css que Tienda
 }
 
-<h2 class="tienda-cartel">TIENDA</h2>
-
-
+<h2 class="tienda-cartel">Encargar insumos</h2>
 
 
 <div class="contenedor-papu">
+
     <div class="contenedor-inicio">
         <div class="filtro-categorias">
-            <label for="select-categoria">Filtrar por categoría:</label>
+            @{
+                var proveedores = ViewBag.Proveedores as List<Proveedor> ?? new List<Proveedor>();
+            }
             <select id="select-categoria">
                 <option value="todos">Todos</option>
-                <option value="Bebidas Calientes">Bebidas calientes</option>
-                <option value="Facturas">Facturas</option>
-                <option value="Bebidas Frias">Bebidas frías</option>
+                @foreach (var proveedor in proveedores)
+                {
+                    <option value="@proveedor.ID_Proveedor">@proveedor.Nombre</option>
+                }
+            
             </select>
         </div>
         <div class="buscador-productos">
             <input type="text" id="busqueda" placeholder="Buscar insumo...">
         </div>
     </div>
-</div>
 
 
+    </select>
         <div id="carta-container">
             @foreach (var producto in Model)
             {
-                <div class="carta-rodeo" data-categoria="@producto.Categoria" data-id="@producto.ID_Producto">
+                <div class="carta-rodeo" data-categoria="@producto.Proveedor?.ID_Proveedor" data-id="@producto.ID_Producto">
                     <div class="carta">
                         <div class="info-carta">   
                             <div class="titulo-carta">
                                 <p>@producto.Nombre</p>                    
                             </div>
                             <div class="precio-carta">
-                                <p>$@producto.PrecioUnitario</p>
+                                <p>Costo: $@producto.PrecioCosto</p>
                             </div>                     
                             <div class="categoria-carta">
                                 <p>@producto.Categoria</p>
@@ -87,7 +90,6 @@ let carritoVisible = false;
 
 function actualizarCarrito() {
     const ids = carrito.map(item => item.id);
-
     $.ajax({
         url: '/Tienda/CarritoParcial',
         type: 'POST',
@@ -112,6 +114,17 @@ function actualizarCarrito() {
         }
     });
 }
+
+$('#busqueda').on('input', function () {
+    const texto = $(this).val().toLowerCase().trim();
+
+    $('#carta-container .carta-rodeo').each(function () {
+        const nombre = $(this).find('.titulo-carta p').text().toLowerCase();
+        $(this).toggle(nombre.includes(texto));
+    });
+});
+
+
 
 function actualizarCantidadesCarrito() {
     carrito.forEach(item => {
