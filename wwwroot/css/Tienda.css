@@ -489,3 +489,53 @@ button#cerrar-carrito {
   input#busqueda {
     width: 25rem;
 }
+
+
+@media (max-width: 768px) {
+    .contenedor-inicio {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0 1rem;
+        width: 100%;
+    }
+
+    .filtro-categorias,
+    .buscador-productos {
+        width: 100%;
+        text-align: center;
+    }
+
+    .filtro-categorias select,
+    .buscador-productos input {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .tienda-cartel {
+        font-size: 2rem;
+        text-align: center;
+        padding: 2rem 0 1rem 0;
+    }
+
+    .carta-rodeo {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    #carrito-container {
+        width: 90%;
+        left: 5%;
+        transform: translateY(-150%);
+    }
+
+    #carrito-container.visible {
+        transform: translateY(25%);
+    }
+}
+
+
