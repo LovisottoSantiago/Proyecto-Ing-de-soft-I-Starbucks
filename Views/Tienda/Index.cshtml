@@ -1,15 +1,13 @@
 @model List<Ing_Soft.Models.Producto>
 
 @{
-    ViewData["Title"] = "Vista";
+    ViewData["Title"] = "Tienda";
+    Layout ="~/Views/Shared/_LayoutTienda.cshtml";
 }
 
 <h2 class="tienda-cartel">TIENDA</h2>
 
-<button id="boton-carrito" style="position: fixed; top: 100px; right: 100px; z-index: 1000; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;">
-    <img src="@Url.Content("~/Img/carrito.png")" alt="Carrito" style="width:32px; height:32px;" />
-    <a href="#" id="contador-carrito" style="color: black; text-decoration: none; font-weight: bold;">0</a>
-</button>
+
 
 
 <div class="contenedor-papu">
@@ -91,6 +89,7 @@ function actualizarCarrito() {
             $('#contenido-carrito').html(data);
             actualizarCantidadesCarrito();
             actualizarContador();
+            
 
             if (carrito.length > 0) {
                 if (!carritoVisible && !carritoCerradoManualmente) {

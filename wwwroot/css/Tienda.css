@@ -246,6 +246,41 @@ div#carta-container {
     opacity: 1;
 }
 
+.editar-cantidad {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+}
+
+
+    .fila-carrito .eliminar-producto {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: auto; /* para que el botón reciba clicks */
+    }
+    
+    .fila-carrito .editar-cantidad {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: auto; /* para que siga siendo clickable cuando se ve */
+    }
+    
+    .fila-carrito:hover .editar-cantidad,
+.fila-carrito:hover .eliminar-producto {
+    visibility: visible;
+    opacity: 1;
+}
+    .fila-carrito:hover .eliminar-producto,
+    .fila-carrito .eliminar-producto:hover {
+        visibility: visible;
+        opacity: 1;
+    }
 div#contenido-carrito {
     display: flex;
     flex-direction: row;
@@ -272,6 +307,35 @@ div#carrito {
 div#carrito-container .table {
     color: white;
 }
+
+.custom-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    pointer-events: none; /* evita problemas al hacer clic cerca */
+}
+
+.eliminar-producto{
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    border: none;
+}
+
 
 
 button#cerrar-carrito {
