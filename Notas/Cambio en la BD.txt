@@ -1,0 +1,24 @@
+-- 1. Agregar campo ID_Proveedor a Producto
+ALTER TABLE Producto
+ADD ID_Proveedor INT;
+ALTER TABLE Producto
+ADD CONSTRAINT FK_Producto_Proveedor
+FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor);
+
+-- 2. Agregar campo PrecioCosto a Producto
+ALTER TABLE Producto
+ADD PrecioCosto DECIMAL(10,2);
+
+-- 3. Crear trigger para calcular automáticamente el PrecioUnitario
+CREATE TRIGGER trg_CalcularPrecioUnitario
+ON Producto
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE p
+    SET p.PrecioUnitario = p.PrecioCosto * 2.2
+    FROM Producto p
+    INNER JOIN inserted i ON p.ID_Producto = i.ID_Producto;
+END;

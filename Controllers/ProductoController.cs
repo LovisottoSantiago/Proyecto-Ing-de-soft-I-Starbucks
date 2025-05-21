@@ -26,7 +26,8 @@ namespace Ing_Soft.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Producto.ToListAsync());
+            var productosConProveedor = _context.Producto.Include(p => p.Proveedor);
+            return View(await productosConProveedor.ToListAsync());
         }
 
         // GET: Producto/Details/5
@@ -52,6 +53,7 @@ namespace Ing_Soft.Controllers
         [RolAuthorize("Administrador")]
         public IActionResult Create()
         {
+            ViewData["ID_Proveedor"] = new SelectList(_context.Proveedor, "ID_Proveedor", "Nombre");
             return View();
         }
 
@@ -61,8 +63,10 @@ namespace Ing_Soft.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RolAuthorize("Administrador")]
-        public async Task<IActionResult> Create([Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl,Categoria")] Producto producto)
+        public async Task<IActionResult> Create([Bind("ID_Producto,Nombre,Descripcion,PrecioCosto,Stock,Estado,ImagenUrl,Categoria,ID_Proveedor")] Producto producto)
         {
+            producto.PrecioUnitario = producto.PrecioCosto * 2.2m;
+
             if (ModelState.IsValid)
             {
                 _context.Add(producto);
@@ -77,15 +81,15 @@ namespace Ing_Soft.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var producto = await _context.Producto.FindAsync(id);
             if (producto == null)
-            {
                 return NotFound();
-            }
+
+            // Cargar lista de proveedores para el dropdown
+            ViewData["ID_Proveedor"] = new SelectList(_context.Proveedor, "ID_Proveedor", "Nombre", producto.ID_Proveedor);
+
             return View(producto);
         }
 
@@ -95,12 +99,15 @@ namespace Ing_Soft.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RolAuthorize("Administrador")]
-        public async Task<IActionResult> Edit(int id, [Bind("ID_Producto,Nombre,Descripcion,PrecioUnitario,Stock,Estado,ImagenUrl,Categoria")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("ID_Producto,Nombre,Descripcion,PrecioCosto,Stock,Estado,ImagenUrl,Categoria,ID_Proveedor")] Producto producto)
         {
             if (id != producto.ID_Producto)
             {
                 return NotFound();
             }
+
+            // Calculamos el PrecioUnitario desde el PrecioCosto recibido
+            producto.PrecioUnitario = producto.PrecioCosto * 2.2m;
 
             if (ModelState.IsValid)
             {
@@ -123,7 +130,7 @@ namespace Ing_Soft.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(producto);
-        }
+        }        
 
         // GET: Producto/Delete/5
         [RolAuthorize("Administrador")]
@@ -141,6 +148,7 @@ namespace Ing_Soft.Controllers
                 return NotFound();
             }
 
+            ViewData["ID_Proveedor"] = new SelectList(_context.Proveedor, "ID_Proveedor", "Nombre", producto.ID_Proveedor);
             return View(producto);
         }
 

@@ -15,13 +15,19 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.ID_Producto)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrecioUnitario)
+                @Html.DisplayNameFor(model => model.PrecioCosto)
+            </th>
+            <th>
+                PrecioVenta
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Stock)
@@ -35,17 +41,25 @@
             <th>
                 @Html.DisplayNameFor(model => model.Categoria)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID_Proveedor)
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr style="vertical-align: middle;">
             <td>
+                @Html.DisplayFor(modelItem => item.ID_Producto)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioCosto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PrecioUnitario)
@@ -62,6 +76,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Categoria)
+            </td>            
+            <td>
+                @item.Proveedor?.Nombre
             </td>            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a> |

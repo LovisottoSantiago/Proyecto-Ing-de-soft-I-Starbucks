@@ -63,7 +63,7 @@ div#carta-container {
 .carta {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 100%; /* antes 100% */
     padding: 12px;
     border: 1px solid rgb(219, 218, 222);
     border-radius: 6px;
@@ -331,3 +331,72 @@ button#cerrar-carrito {
 .carrito-tabla-scroll::-webkit-scrollbar {
     display: none;
 }
+
+
+/* Responsive para celular */
+@media (max-width: 600px) {
+    div#carta-container,
+    .contenedor-papu {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .carta-rodeo {
+      flex: 1 1 100%;
+      margin: 8px 0;
+      justify-content: center;
+    }
+  
+    .carta {
+      width: 100%; 
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    .foto-carta2 {
+      height: 80px;
+      width: 80px;
+      margin-left: 0;
+      margin-bottom: 8px;
+    }
+  
+    .info-carta {
+      padding-left: 0;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .titulo-carta p {
+      font-size: 1.1rem;
+    }
+  
+    .precio-carta p,
+    .categoria-carta p {
+      font-size: 0.9rem;
+    }
+  
+    .boton-agregar {
+      justify-content: center;
+      margin-top: 0.75rem;
+    }
+  }
+  
+  /* Opcional para pantallas muy chicas */
+  @media (max-width: 360px) {
+    .tienda-cartel {
+      font-size: 2.5rem;
+      padding-top: 3rem;
+    }
+  
+    .carta {
+      padding: 8px;
+    }
+  
+    .boton-agregar button {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+  }
+
+  

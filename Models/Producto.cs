@@ -15,6 +15,8 @@ public partial class Producto
 
     public decimal? PrecioUnitario { get; set; }
 
+    public decimal? PrecioCosto { get; set; }  // <-- NUEVO
+
     public int? Stock { get; set; }
 
     public bool? Estado { get; set; }
@@ -22,6 +24,11 @@ public partial class Producto
     public string? ImagenUrl { get; set; }
 
     public string? Categoria { get; set; }
+
+    [ForeignKey("Proveedor")]
+    public int? ID_Proveedor { get; set; } // <-- NUEVO
+
+    public virtual Proveedor? Proveedor { get; set; } // <-- NUEVO
 
     public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; } = new List<DetalleFactura>();
 
