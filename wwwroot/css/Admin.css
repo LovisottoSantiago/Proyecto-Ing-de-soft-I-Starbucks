@@ -1,0 +1,15 @@
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 30rem;
+    width: fit-content;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5rem auto;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

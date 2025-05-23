@@ -58,7 +58,7 @@ namespace Ing_Soft.Controllers
                     {
                         Console.WriteLine("Usuario correcto");
                         HttpContext.Session.SetString("Rol", "Administrador");
-                        return RedirectToAction("Index", "Producto");
+                        return RedirectToAction("Index", "AdminHome");
                     }
                 }
             TempData["Error"] = "Usuario o contraseña incorrectos";
