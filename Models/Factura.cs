@@ -16,7 +16,6 @@ public partial class Factura
     public decimal? Total { get; set; }
 
     [ForeignKey("FormaPago")] public int? ID_FormaPago { get; set; }
-
     public virtual ICollection<Cobranza> Cobranzas { get; set; } = new List<Cobranza>();
 
     public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; } = new List<DetalleFactura>();

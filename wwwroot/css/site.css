@@ -287,7 +287,6 @@ footer .container h5{
 
 
 .contenedor-tabla-general {
-  padding: 0rem 0.5rem;
   border-style: solid;
   text-align: left;
   margin: 1rem;
@@ -336,4 +335,85 @@ footer .container h5{
   
 
 
+
+.tablecontainer {
+    overflow-x: auto;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .table-controladores {
+        font-size: 0.8rem;
+    }
+
+    .table-controladores td img {
+        max-height: 50px;
+    }
+
+    .carteles-admin {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .tablecontainer {
+        max-height: 5rem;
+    }
+}
+
+.table-controladores {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.table-controladores th,
+.table-controladores td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.table-controladores th {
+    background-color: #00754a;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.tablecontainer::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tablecontainer::-webkit-scrollbar-thumb {
+    background: #00754a;
+    border-radius: 4px;
+}
+
+.tablecontainer::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+.tablecontainer {
+    max-height: 40rem;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: none;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+.tablecontainer::-webkit-scrollbar {
+    width: none;
+}
+
+.tablecontainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tablecontainer::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
 

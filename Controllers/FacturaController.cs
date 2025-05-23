@@ -24,7 +24,10 @@ namespace Ing_Soft.Controllers
         // GET: Factura
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Factura.ToListAsync());
+            var facturas = await _context.Factura
+                .Include(f => f.ID_FormaPagoNavigation)
+                .ToListAsync();
+            return View(facturas);
         }
 
         // GET: Factura/Details/5
@@ -56,7 +59,7 @@ namespace Ing_Soft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID_Factura,Fecha,ID_Cliente,Total,ID_ormaPago")] Factura factura)
+        public async Task<IActionResult> Create([Bind("ID_Factura,Fecha,ID_Cliente,Total,ID_FormaPago")] Factura factura)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +91,7 @@ namespace Ing_Soft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID_Factura,Fecha,ID_Cliente,Total,ID_ormaPago")] Factura factura)
+        public async Task<IActionResult> Edit(int id, [Bind("ID_Factura,Fecha,ID_Cliente,Total,ID_FormaPago")] Factura factura)
         {
             if (id != factura.ID_Factura)
             {
