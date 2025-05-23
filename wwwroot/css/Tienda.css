@@ -278,11 +278,13 @@ display: flex;
     }
     
     .fila-carrito .editar-cantidad {
-        visibility: hidden;
+        visibility: visible;
         opacity: 0;
         transition: opacity 0.2s ease;
         pointer-events: auto; /* para que siga siendo clickable cuando se ve */
     }
+
+    
     
     .fila-carrito:hover .editar-cantidad,
 .fila-carrito:hover .eliminar-producto {
