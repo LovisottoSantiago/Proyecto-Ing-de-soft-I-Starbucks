@@ -124,7 +124,7 @@ $('#busqueda').on('input', function () {
 
 function actualizarCantidadesCarrito() {
     carrito.forEach(item => {
-        $(`#cantidad-carrito-${item.id}`).text(item.cantidad);
+        $(`#cantidad-carrito-${item.id} .cantidad-texto`).text(item.cantidad);
         const precioUnitario = parseFloat($(`#precio-carrito-${item.id}`).text());
         const total = (precioUnitario * item.cantidad).toFixed(2);
         $(`#total-carrito-${item.id}`).text(total);
