@@ -8,11 +8,6 @@ display: flex;
   padding: 0rem 2.5rem;
 }
 
-::selection {
-    color: #f9f9f9;
-    background: #005f3a;
-}
-
 .tienda-cartel{
     font-family: "Lexend Zetta", sans-serif;
     font-optical-sizing: auto;
@@ -170,6 +165,29 @@ display: flex;
 }
 
 #select-categoria:focus {
+    outline: none;
+    border-color: #b5816c;
+    box-shadow: 0 0 0 3px rgba(181, 129, 108, 0.2);
+}
+
+#select-categoria-todos {
+    padding: 10px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fdfdfd;
+    color: #333;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
+    cursor: pointer;
+}
+
+#select-categoria-todos:hover {
+    border-color: #b5816c;
+    box-shadow: rgba(181, 129, 108, 0.2) 0px 4px 12px;
+}
+
+#select-categoria-todos:focus {
     outline: none;
     border-color: #b5816c;
     box-shadow: 0 0 0 3px rgba(181, 129, 108, 0.2);

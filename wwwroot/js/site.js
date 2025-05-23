@@ -48,3 +48,57 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+
+// Cargar categorías desde el archivo JSON
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('/js/categoria.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo cargar el archivo JSON');
+            }
+            return response.json();
+        })
+        .then(categorias => {
+            const select = document.getElementById("select-categoria-todos");
+
+            const optionTodos = document.createElement("option");
+            optionTodos.value = "todos";
+            optionTodos.textContent = "Todos";
+            select.appendChild(optionTodos);
+
+            categorias.forEach(cat => {
+                const option = document.createElement("option");
+                option.value = cat.value;
+                option.textContent = cat.text;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error("Error cargando categorías:", error);
+        });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('/js/categoria.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo cargar el archivo JSON');
+            }
+            return response.json();
+        })
+        .then(categorias => {
+            const select = document.getElementById("select-categoria");
+
+            categorias.forEach(cat => {
+                const option = document.createElement("option");
+                option.value = cat.value;
+                option.textContent = cat.text;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error("Error cargando categorías:", error);
+        });
+});
+

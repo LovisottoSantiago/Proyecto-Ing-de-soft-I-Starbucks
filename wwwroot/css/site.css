@@ -13,6 +13,11 @@ align-items: center;
 
 }
 
+::selection {
+    color: #f9f9f9;
+    background: #005f3a;
+}
+
 .nav-link.logo{
   cursor:default;
 }
