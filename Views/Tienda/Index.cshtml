@@ -7,10 +7,11 @@
 
 <h2 class="tienda-cartel">TIENDA</h2>
 
-
-
-
 <div class="contenedor-papu">
+
+    <div id="mensaje-agregado"></div>
+
+
     <div class="contenedor-inicio">
         <div class="filtro-categorias">
             <select id="select-categoria-todos">
@@ -27,7 +28,7 @@
         <div id="carta-container">
             @foreach (var producto in Model)
             {
-                <div class="carta-rodeo" data-categoria="@producto.Categoria" data-id="@producto.ID_Producto">
+                <div class="carta-rodeo" data-categoria="@producto.Categoria" data-id="@producto.ID_Producto" data-stock="@producto.Stock">
                     <div class="carta">
                         <div class="info-carta">   
                             <div class="titulo-carta">
@@ -173,21 +174,38 @@ $(document).ready(function () {
         carritoCerradoManualmente = true;
     });
 
+
+    // Botón "Agregar" en el carrito
     $('.boton-agregar button').click(function () {
         const $carta = $(this).closest('.carta-rodeo');
         const id = parseInt($carta.data('id'));
         const cantidadSeleccionada = parseInt($carta.find('.cantidad-select').val());
+        const stockDisponible = parseInt($carta.data('stock'));
 
         const itemExistente = carrito.find(item => item.id === id);
+        const cantidadActual = itemExistente ? itemExistente.cantidad : 0;
+        const cantidadNueva = cantidadActual + cantidadSeleccionada;
+
+        if (cantidadNueva > 5) {
+            alert('No puedes agregar más de 5 unidades del mismo producto.');
+            return;
+        }
+
+        if (cantidadNueva > stockDisponible) {
+            alert('No hay suficiente stock disponible.');
+            return;
+        }
 
         if (itemExistente) {
-            itemExistente.cantidad += cantidadSeleccionada;
+            itemExistente.cantidad = cantidadNueva;
         } else {
             carrito.push({ id: id, cantidad: cantidadSeleccionada });
         }
 
         actualizarCarrito();
+        mostrarMensaje('Producto agregado al carrito!');
     });
+
 });
 
 $(document).on('click', '.eliminar-producto', function () {
@@ -213,26 +231,53 @@ $(document).on('click', '.editar-cantidad', function () {
     $td.find('.select-cantidad').show().focus();
 });
 
+
 // Cuando se cambia el valor del select
 $(document).on('change', '.select-cantidad', function () {
-    const nuevaCantidad = parseInt($(this).val());
-    const $td = $(this).closest('td');
+    const $select = $(this);
+    const nuevaCantidad = parseInt($select.val());
+
+    const $td = $select.closest('td');
     const $span = $td.find('.cantidad-texto');
-    const id = $td.attr('id').replace('cantidad-carrito-', '');
+    const id = parseInt($td.attr('id').replace('cantidad-carrito-', ''));
 
-    // Actualizar visual
-    $span.text(nuevaCantidad).show();
-    $(this).hide();
+    const item = carrito.find(p => p.id === id);
+    if (!item) return;
 
-    // Actualizar el array `carrito`
-    const item = carrito.find(p => p.id == id);
-    if (item) {
-        item.cantidad = nuevaCantidad;
+    const $cartaOriginal = $(`.carta-rodeo[data-id='${id}']`);
+    const stockDisponible = parseInt($cartaOriginal.data('stock'));
+
+    if (nuevaCantidad > 5) {
+        alert('No puedes seleccionar más de 5 unidades del mismo producto.');
+        $select.val(item.cantidad); 
+        return;
     }
 
-    // Actualizar totales
+    if (nuevaCantidad > stockDisponible) {
+        alert('No hay suficiente stock disponible.');
+        $select.val(item.cantidad); 
+        return;
+    }
+
+    item.cantidad = nuevaCantidad;
+    $span.text(nuevaCantidad).show();
+    $select.hide();
+
     actualizarCantidadesCarrito();
 });
+
+
+
+
+function mostrarMensaje(texto) {
+    const mensaje = $('#mensaje-agregado');
+    mensaje.text(texto);
+    mensaje.stop(true, true).fadeIn(300);  // Mostrar con fadeIn (animación suave)
+    setTimeout(() => {
+        mensaje.fadeOut(300); // Ocultar después de 2 segundos
+    }, 1000);
+}
+
 
 </script>
 

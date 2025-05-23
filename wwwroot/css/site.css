@@ -422,3 +422,21 @@ footer .container h5{
     border-radius: 4px;
 }
 
+
+#mensaje-agregado {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #00754a;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    z-index: 1000;
+    min-width: 200px;
+    text-align: center;
+    font-size: 1.1rem;
+}

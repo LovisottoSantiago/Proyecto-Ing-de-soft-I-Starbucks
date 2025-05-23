@@ -11,3 +11,4 @@ function ver(){
    navbar.style.backgroundColor = "black";
 }
 
+
