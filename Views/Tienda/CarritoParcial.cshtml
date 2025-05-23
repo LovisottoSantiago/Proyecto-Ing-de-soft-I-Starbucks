@@ -23,6 +23,13 @@
                             <td id="precio-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
                            <td id="cantidad-carrito-@producto.ID_Producto">
                                 <span class="cantidad-texto">1</span>
+                                    <select class="select-cantidad" style="display: none;">
+                                       @for (int i = 1; i <= 5; i++)
+                                            {
+                                                var selected = i == 1 ? "selected" : "";
+                                                @: <option value="@i" @selected>@i</option>
+                                            }
+                                    </select>
                                 <img src='@Url.Content("~/Img/9143985.png")' class="editar-cantidad" alt="Editar cantidad" />
                             </td>
                             <td id="total-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
