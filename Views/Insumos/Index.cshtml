@@ -11,11 +11,11 @@
 <div class="contenedor-papu">
 
     <div class="contenedor-inicio">
-        <div class="filtro-categorias">
+        <div class="filtro-proveedores">
             @{
                 var proveedores = ViewBag.Proveedores as List<Proveedor> ?? new List<Proveedor>();
             }
-            <select id="select-categoria">
+            <select id="select-proveedores">
                 <option value="todos">Todos</option>
                 @foreach (var proveedor in proveedores)
                 {
@@ -97,6 +97,7 @@ function actualizarCarrito() {
             $('#contenido-carrito').html(data);
             actualizarCantidadesCarrito();
             actualizarContador();
+            actualizarTotal();
             
 
             if (carrito.length > 0) {
@@ -128,9 +129,18 @@ function actualizarCantidadesCarrito() {
     carrito.forEach(item => {
         $(`#cantidad-carrito-${item.id} .cantidad-texto`).text(item.cantidad);
         const PrecioCosto = parseFloat($(`#precio-carrito-${item.id}`).text());
-        const total = (PrecioCosto * item.cantidad * 20).toFixed(2);
+        const total = (PrecioCosto * item.cantidad).toFixed(2);
         $(`#total-carrito-${item.id}`).text(total);
     });
+}
+
+function actualizarTotal(){
+    let total = 0;
+    carrito.forEach(item => {
+        const precioUnitario = parseFloat($(`#precio-carrito-${item.id}`).text());
+        total += precioUnitario * item.cantidad;
+    });
+    $('#total-carrito').text(total.toFixed(2));
 }
 
 function actualizarContador() {
@@ -237,6 +247,7 @@ $(document).on('change', '.select-cantidad', function () {
 
     // Actualizar totales
     actualizarCantidadesCarrito();
+    actualizarTotal();
 });
 
 </script>

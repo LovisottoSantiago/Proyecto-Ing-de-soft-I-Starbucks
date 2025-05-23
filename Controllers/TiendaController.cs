@@ -23,18 +23,6 @@ namespace Ing_Soft.Controllers
             return View(productos);
         }
 
-
-        // Métodos para implementar:
-
-        // Index() → muestra todos los productos disponibles para comprar.
-
-        // AgregarAlCarrito(int id) → agrega un producto al carrito.
-
-        // Carrito() → muestra los productos agregados.
-
-        // FinalizarCompra() → realiza la compra de los productos en el carrito, tiene relacion con DetalleFactura.
-
-
         [HttpPost]
         public IActionResult CarritoParcial(List<int>? ids)
         {
@@ -46,6 +34,58 @@ namespace Ing_Soft.Controllers
         }
 
         
+        [HttpPost]
+        public async Task<IActionResult> RealizarVenta([FromBody] List<DetalleFactura> detallesEntrada)
+        {
+            if (detallesEntrada == null || !detallesEntrada.Any())
+                return BadRequest("No se recibieron productos para la venta.");
+
+            var factura = new Factura
+            {
+                Fecha = DateTime.Now,
+                ID_Cliente = 1,       // TODO: Reemplazar con el ID real del cliente autenticado
+                ID_FormaPago = 1,     // TODO: Reemplazar con el ID real de la forma de pago
+                DetalleFacturas = new List<DetalleFactura>()
+            };
+
+            decimal total = 0;
+
+            foreach (var entrada in detallesEntrada)
+            {
+                var producto = await _context.Producto.FindAsync(entrada.ID_Producto);
+                if (producto == null)
+                    return NotFound($"Producto con ID {entrada.ID_Producto} no encontrado.");
+
+                if (producto.Stock < entrada.Cantidad)
+                    return BadRequest($"Stock insuficiente para el producto {producto.Nombre}.");
+
+                // Restar stock
+                producto.Stock -= entrada.Cantidad;
+
+                var detalle = new DetalleFactura
+                {
+                    ID_Producto = producto.ID_Producto,
+                    Cantidad = entrada.Cantidad,
+                    PrecioUnitario = producto.PrecioUnitario
+                };
+
+                total += (decimal)((detalle.PrecioUnitario ?? 0) * detalle.Cantidad);
+
+                factura.DetalleFacturas.Add(detalle);
+            }
+
+            factura.Total = total;
+
+            _context.Factura.Add(factura);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                mensaje = "Compra realizada con éxito.",
+                idFactura = factura.ID_Factura,
+                total = factura.Total
+            });
+        }
 
 
 
