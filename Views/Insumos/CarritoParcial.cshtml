@@ -17,12 +17,21 @@
                 {
                     foreach (var producto in Model)
                     {
-                        string nombre = producto.Nombre.Length > 25 ? producto.Nombre.Substring(0, 22) + "..." : producto.Nombre;
+                        string nombre = producto.Nombre.Length > 25 
+                            ? "Bulto x20 " + producto.Nombre.Substring(0, 22) + "..." 
+                            : "Bulto x20 " + producto.Nombre;
                         <tr class="fila-carrito">
                             <td>@nombre</td>
-                            <td id="precio-carrito-@producto.ID_Producto">@producto.PrecioCosto</td>
-                            <td id="cantidad-carrito-2">
-                            1
+                            <td id="precio-carrito-@producto.ID_Producto">@(producto.PrecioCosto *20)</td>
+                            <td id="cantidad-carrito-@producto.ID_Producto">
+                                <span class="cantidad-texto">1</span>
+                                <select class="select-cantidad" style="display: none;">
+                                       @for (int i = 1; i <= 5; i++)
+                                            {
+                                                var selected = i == 1 ? "selected" : "";
+                                                @: <option value="@i" @selected>@i</option>
+                                            }
+                                    </select>
                             <img src="@Url.Content("~/Img/9143985.png")" class="editar-cantidad" alt="Editar cantidad" />
                             </td>
                             <td id="total-carrito-@producto.ID_Producto">@producto.PrecioCosto</td>
