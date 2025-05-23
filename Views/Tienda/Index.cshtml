@@ -94,6 +94,7 @@ function actualizarCarrito() {
             $('#contenido-carrito').html(data);
             actualizarCantidadesCarrito();
             actualizarContador();
+            actualizarTotal()
             
 
             if (carrito.length > 0) {
@@ -141,6 +142,15 @@ function actualizarContador() {
         $boton.css('opacity', '1');
         $boton.css('cursor', 'pointer');
     }
+}
+
+function actualizarTotal(){
+    let total = 0;
+    carrito.forEach(item => {
+        const precioUnitario = parseFloat($(`#precio-carrito-${item.id}`).text());
+        total += precioUnitario * item.cantidad;
+    });
+    $('#total-carrito').text(total.toFixed(2));
 }
 
 $(document).ready(function () {
@@ -264,6 +274,7 @@ $(document).on('change', '.select-cantidad', function () {
     $select.hide();
 
     actualizarCantidadesCarrito();
+    actualizarTotal();
 });
 
 
