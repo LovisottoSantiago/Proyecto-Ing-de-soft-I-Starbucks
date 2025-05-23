@@ -18,6 +18,7 @@ namespace Ing_Soft.Controllers
         public IActionResult Index()
         {
             var productos = _context.Producto
+                .Where(p => p.Estado == true)
                 .ToList();
             return View(productos);
         }

@@ -54,7 +54,7 @@ namespace Ing_Soft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID_Cliente,Nombre,Email,Telefono")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("ID_Cliente,Nombre,Email,Telefono,Direccion")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Ing_Soft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID_Cliente,Nombre,Email,Telefono")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("ID_Cliente,Nombre,Email,Telefono,Direccion")] Cliente cliente)
         {
             if (id != cliente.ID_Cliente)
             {
