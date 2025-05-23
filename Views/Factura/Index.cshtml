@@ -47,9 +47,7 @@
                     @(item.ID_FormaPagoNavigation != null ? item.ID_FormaPagoNavigation.Descripcion : "")
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID_Factura">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID_Factura">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID_Factura">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.ID_Factura">Detalles</a>
                 </td>
             </tr>
     }

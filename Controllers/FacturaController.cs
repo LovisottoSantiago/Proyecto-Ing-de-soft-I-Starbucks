@@ -83,6 +83,8 @@ namespace Ing_Soft.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["ID_FormaPago"] = new SelectList(_context.FormaPago, "ID_FormaPago", "Descripcion", factura.ID_FormaPago);
             return View(factura);
         }
 
