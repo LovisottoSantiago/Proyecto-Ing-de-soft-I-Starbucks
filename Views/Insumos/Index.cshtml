@@ -38,10 +38,11 @@
                     <div class="carta">
                         <div class="info-carta">   
                             <div class="titulo-carta">
-                                <p>@producto.Nombre</p>                    
+                                <p>@producto.Nombre</p>        
+                                <h2 style="font-size: 1rem; color:green;">Bulto x20</h2>            
                             </div>
                             <div class="precio-carta">
-                                <p>Costo: $@producto.PrecioCosto</p>
+                                <p>Costo: $@(producto.PrecioCosto * 20)</p>
                             </div>                     
                             <div class="categoria-carta">
                                 <p>@producto.Categoria</p>
@@ -125,9 +126,9 @@ $('#busqueda').on('input', function () {
 
 function actualizarCantidadesCarrito() {
     carrito.forEach(item => {
-        $(`#cantidad-carrito-${item.id}`).text(item.cantidad);
+        $(`#cantidad-carrito-${item.id} .cantidad-texto`).text(item.cantidad);
         const PrecioCosto = parseFloat($(`#precio-carrito-${item.id}`).text());
-        const total = (PrecioCosto * item.cantidad).toFixed(2);
+        const total = (PrecioCosto * item.cantidad * 20).toFixed(2);
         $(`#total-carrito-${item.id}`).text(total);
     });
 }
@@ -192,6 +193,50 @@ $(document).ready(function () {
 
         actualizarCarrito();
     });
+});
+
+$(document).on('click', '.eliminar-producto', function () {
+    const id = $(this).data('id'); // obtiene el ID del producto desde el atributo data-id
+
+    // Paso 2: eliminar del array `carrito`
+    const index = carrito.findIndex(item => item.id === id);
+    if (index !== -1) {
+        carrito.splice(index, 1); // lo elimina del array
+    }
+
+    // Paso 3: eliminar del DOM la fila completa (la fila padre del botón)
+    $(this).closest('tr').remove();
+
+    // Paso 4: actualizar totales si corresponde
+    actualizarCarrito();
+});
+
+// Cuando clickeás el lapicito
+$(document).on('click', '.editar-cantidad', function () {
+    const $td = $(this).closest('td');
+    $td.find('.cantidad-texto').hide();
+    $td.find('.select-cantidad').show().focus();
+});
+
+// Cuando se cambia el valor del select
+$(document).on('change', '.select-cantidad', function () {
+    const nuevaCantidad = parseInt($(this).val());
+    const $td = $(this).closest('td');
+    const $span = $td.find('.cantidad-texto');
+    const id = $td.attr('id').replace('cantidad-carrito-', '');
+
+    // Actualizar visual
+    $span.text(nuevaCantidad).show();
+    $(this).hide();
+
+    // Actualizar el array `carrito`
+    const item = carrito.find(p => p.id == id);
+    if (item) {
+        item.cantidad = nuevaCantidad;
+    }
+
+    // Actualizar totales
+    actualizarCantidadesCarrito();
 });
 
 </script>
