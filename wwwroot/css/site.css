@@ -46,7 +46,7 @@ align-items: center;
 }
 
 
-#login-container {
+#login-container, #login-usuario-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -63,13 +63,14 @@ align-items: center;
 }
 
 
-#login-container h2 {
+
+#login-container h2, #login-usuario-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #00704a;
 }
 
-#login-container button{
+#login-container button, #login-usuario-container button {
       
       color: white;
       border: none;
@@ -82,19 +83,97 @@ align-items: center;
       transition: background-color 0.3s;
 }
 
-#login-container button:hover{
+#login-container button:hover, #login-usuario-container button:hover {
   background-color: #012c1c;
 }
 
 
-#login-container .close-button{
+#login-container .close-button, #login-usuario-container .close-button {
 justify-self: end;
+
 
 }
 
-#login-container .close-button button {
+#login-container .close-button button, #login-usuario-container .close-button button {
   padding: 0.25rem 0.75rem;
   border-radius: 5px;
+}
+
+#register-usuario-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 1000;
+  font-family: 'Sansita Swashed', cursive;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-block {
+  margin-bottom: 15px;
+}
+
+.input-block label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-block input {
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#register-usuario-container button[type="submit"] {
+  background-color: #00704A;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#register-usuario-container button[type="submit"]:hover {
+  background-color: #005f3c;
+}
+
+#register-usuario-container .close-button {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+#register-usuario-container .close-button button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+
+#register-usuario-container .close-button button:hover {
+  color: #000;
+}
+
+li.nav-item:hover .logout-form {
+  display: block !important;
+}
+.logout-form button:hover {
+  text-decoration: underline;
 }
 
 input[type="text"],
@@ -135,7 +214,7 @@ input[type="text"],
 /*estilado  del login responsive */
 @media (max-width: 768px) {
 
-  #login-container{
+  #login-container, #login-usuario-container {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -161,7 +240,7 @@ input[type="text"], input[type="password"] {
     font-size: 16px;
     transition: border-color 0.3s;
 }
-#login-container button{
+#login-container button, #login-usuario-container button {
       
       color: white;
       border: none;
@@ -175,26 +254,26 @@ input[type="text"], input[type="password"] {
 }
 
 
-#login-container button:hover{
+#login-container button:hover, #login-usuario-container button:hover {
   background-color: #012c1c;
 }
 
-#login-container h2 {
+#login-container h2, #login-usuario-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #00704a;
 }
 
-#login-container .close-button{
+#login-container .close-button, #login-usuario-container .close-button {
  justify-self: end;
  
 }
 
-#login-container .close-button button{
+#login-container .close-button button, #login-usuario-container .close-button button{
 padding: 50%;
 }
 
-  }
+}
   
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {

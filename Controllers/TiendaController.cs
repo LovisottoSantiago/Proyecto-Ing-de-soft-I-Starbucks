@@ -1,6 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Ing_Soft.Data;
 using Ing_Soft.Models;
-using Microsoft.AspNetCore.Mvc;
+using Ing_Soft.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ing_Soft.Controllers
 {
@@ -33,17 +41,23 @@ namespace Ing_Soft.Controllers
             return PartialView("CarritoParcial", productos);
         }
 
-        
+        [RolAuthorize("Usuario")]
         [HttpPost]
         public async Task<IActionResult> RealizarVenta([FromBody] List<DetalleFactura> detallesEntrada)
         {
             if (detallesEntrada == null || !detallesEntrada.Any())
                 return BadRequest("No se recibieron productos para la venta.");
 
+            var idClienteSesion = HttpContext.Session.GetInt32("idCliente");
+                if (!idClienteSesion.HasValue)
+                {
+                    return Unauthorized("Debe iniciar sesión para realizar la compra.");
+                }
+
             var factura = new Factura
             {
                 Fecha = DateTime.Now,
-                ID_Cliente = 1,       // TODO: Reemplazar con el ID real del cliente autenticado
+                ID_Cliente = idClienteSesion.Value,    // TODO: Reemplazar con el ID real del cliente autenticado
                 ID_FormaPago = 1,     // TODO: Reemplazar con el ID real de la forma de pago
                 DetalleFacturas = new List<DetalleFactura>()
             };
