@@ -24,7 +24,12 @@ namespace Ing_Soft.Controllers
         // GET: Cobranza
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cobranza.ToListAsync());
+            var cobranzas = await _context.Cobranza
+                .Include(c => c.ID_FormaPagoNavigation)
+                .Include(c => c.ID_FacturaNavigation)
+                .OrderByDescending(c => c.Fecha)
+                .ToListAsync();
+            return View(cobranzas);
         }
 
         // GET: Cobranza/Details/5

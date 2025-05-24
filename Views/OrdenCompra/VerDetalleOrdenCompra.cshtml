@@ -1,0 +1,50 @@
+@model List<Ing_Soft.Models.DetalleOrdenCompra>
+
+@{
+    ViewData["Title"] = "Detalle de Orden de Compra";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="carteles-admin">Detalle de la Orden de Compra</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="contenedor-tabla-general">
+        <table class="table-controladores">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio Unitario</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var producto = item.ID_ProductoNavigation;
+                    var nombre = producto.Nombre.Length > 25 
+                        ? "Bulto x20 " + producto.Nombre.Substring(0, 22) + "..." 
+                        : "Bulto x20 " + producto.Nombre;
+
+                    <tr>
+                        <td>@nombre</td>
+                        <td>$@item.PrecioUnitario</td>
+                        <td>@item.Cantidad</td>
+                        <td>$@(item.PrecioUnitario * item.Cantidad)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="total-carrito">
+        <h4>Total: $@Model.Sum(m => m.PrecioUnitario * m.Cantidad)</h4>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        No se encontraron productos en esta orden de compra.
+    </div>
+}

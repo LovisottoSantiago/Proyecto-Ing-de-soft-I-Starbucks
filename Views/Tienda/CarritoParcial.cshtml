@@ -56,13 +56,25 @@
         </div>
 
         <div id="modal-pago" style="display: none; padding: 20px; background: white; border: 1px solid #ccc; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -30%); z-index: 1000; text-align: center;">
-    <h4 style="color:black;">Seleccioná medio de pago:</h4>
-    <button class="boton-pago" data-pago="1">Efectivo</button>
-    <button class="boton-pago" data-pago="2">Tarjeta</button>
-    <button class="boton-pago" data-pago="3">Transferencia</button>
+            <h4 style="color:black;">Seleccioná medio de pago:</h4>
+            <button class="boton-pago" data-pago="1">Efectivo</button>
+            <button class="boton-pago" data-pago="2">Tarjeta</button>
+            <button class="boton-pago" data-pago="3">Transferencia</button>
+        </div>
+
+        <div id="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index: 999;"></div>
+
+
+<!-- Modal de carga para compra -->
+<div id="modal-cargando" style="display: none; padding: 20px; background: white; border: 1px solid #ccc; position: fixed; top: 40%; left: 50%; transform: translate(-50%, -40%); z-index: 1001; text-align: center;">
+    <h4 style="color:black;">Procesando tu compra...</h4>    
+    <div class="loader"></div>
 </div>
 
-<div id="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index: 999;"></div>
+
+
+
+
 
 <script>
 document.getElementById('boton-comprar').addEventListener('click', function () {
@@ -83,6 +95,8 @@ $('.boton-pago').click(function () {
 
     // Enviar venta al backend
     cerrarModalPago();
+    $('#modal-cargando').fadeIn();  // Mostrar modal de carga
+
     $.ajax({
         url: '/Tienda/RealizarVenta',
         type: 'POST',

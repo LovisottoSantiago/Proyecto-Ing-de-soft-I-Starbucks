@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+
 <h2 class="carteles-admin">Ordenes de Compra</h2>
 
 <p style="text-align: center;">
@@ -15,6 +16,9 @@
     <table class="table-controladores">
         <thead>
             <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_OrdenCompra)
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Fecha)
                 </th>
@@ -31,18 +35,21 @@
     @foreach (var item in Model) {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.ID_OrdenCompra)
+                </td>
+                <td>
                     <!-- Html.DisplayFor(modelItem => item.Fecha) --> 
                     @item.Fecha?.ToString("dd/MM/yyyy  HH:mm:ss")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ID_Proveedor)
+                    @(item.ID_ProveedorNavigation != null ? item.ID_ProveedorNavigation.Nombre : "")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ID_OrdenCompra">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID_OrdenCompra">Details</a> |
+                    <a asp-action="VerDetalleOrdenCompra" asp-route-id="@item.ID_OrdenCompra">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.ID_OrdenCompra">Delete</a>
                 </td>
             </tr>

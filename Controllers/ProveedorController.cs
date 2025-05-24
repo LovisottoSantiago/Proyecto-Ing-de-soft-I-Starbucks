@@ -155,5 +155,48 @@ namespace Ing_Soft.Controllers
         {
             return _context.Proveedor.Any(e => e.ID_Proveedor == id);
         }
+
+
+        [HttpPost]
+        public IActionResult RealizarOrdenCompra([FromBody] List<DetalleOrdenCompra> detalles)
+        {
+            if (detalles == null || !detalles.Any())
+                return BadRequest("No se recibieron productos");
+
+            var idProveedor = _context.Producto.First(p => p.ID_Producto == detalles[0].ID_Producto).ID_Proveedor;
+
+            var orden = new OrdenCompra
+            {
+                Fecha = DateTime.Now,
+                ID_Proveedor = idProveedor,
+                Total = detalles.Sum(d => d.PrecioUnitario * d.Cantidad),
+                DetalleOrdenCompras = new List<DetalleOrdenCompra>()
+            };
+
+            foreach (var detalle in detalles)
+            {
+                orden.DetalleOrdenCompras.Add(new DetalleOrdenCompra
+                {
+                    ID_Producto = detalle.ID_Producto,
+                    Cantidad = detalle.Cantidad,
+                    PrecioUnitario = detalle.PrecioUnitario
+                });
+                
+                // Aumentar el stock del producto correspondiente
+                var producto = _context.Producto.FirstOrDefault(p => p.ID_Producto == detalle.ID_Producto);
+                if (producto != null)
+                {
+                    producto.Stock += detalle.Cantidad * 20;
+                }
+
+            }
+
+            _context.OrdenCompra.Add(orden);
+            _context.SaveChanges();
+
+            return Json(new { mensaje = "Orden registrada", idOrdenCompra = orden.ID_OrdenCompra });
+        }
+
+
     }
 }

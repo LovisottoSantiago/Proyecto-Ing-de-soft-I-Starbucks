@@ -79,12 +79,25 @@ namespace Ing_Soft.Controllers
             _context.Factura.Add(factura);
             await _context.SaveChangesAsync();
 
-            return Ok(new
-            {
-                mensaje = "Compra realizada con éxito.",
-                idFactura = factura.ID_Factura,
-                total = factura.Total
-            });
+            //  Crear la cobranza asociada
+                var cobranza = new Cobranza
+                {
+                    ID_Factura   = factura.ID_Factura,
+                    Fecha        = DateTime.Now,
+                    Monto        = factura.Total,
+                    ID_FormaPago = factura.ID_FormaPago // usar la misma forma de pago
+                };
+
+                _context.Cobranza.Add(cobranza);
+                await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    mensaje    = "Compra y cobranza registradas con éxito.",
+                    idFactura  = factura.ID_Factura,
+                    idCobranza = cobranza.ID_Cobranza,
+                    total      = factura.Total
+                });
         }
 
 

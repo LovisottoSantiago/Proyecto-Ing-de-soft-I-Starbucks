@@ -27,7 +27,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ID_FormaPago)
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -44,12 +43,7 @@
                     @Html.DisplayFor(modelItem => item.Monto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ID_FormaPago)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID_Cobranza">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID_Cobranza">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID_Cobranza">Delete</a>
+                    @(item.ID_FormaPagoNavigation != null ? item.ID_FormaPagoNavigation.Descripcion : "")
                 </td>
             </tr>
     }

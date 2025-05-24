@@ -16,6 +16,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.ID_Factura)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Fecha)
                 </th>
                 <th>
@@ -34,6 +37,9 @@
     @foreach (var item in Model) {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.ID_Factura)
+                </td>
+                <td>
                     <!-- Html.DisplayFor(modelItem => item.Fecha) --> 
                     @item.Fecha?.ToString("dd/MM/yyyy  HH:mm:ss")
                 </td>
@@ -47,7 +53,7 @@
                     @(item.ID_FormaPagoNavigation != null ? item.ID_FormaPagoNavigation.Descripcion : "")
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.ID_Factura">Detalles</a>
+                        <a asp-action="VerDetalleFactura" asp-route-id="@item.ID_Factura" class="btn btn-dark btn-sm">Ver Detalle</a>
                 </td>
             </tr>
     }

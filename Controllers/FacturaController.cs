@@ -26,6 +26,7 @@ namespace Ing_Soft.Controllers
         {
             var facturas = await _context.Factura
                 .Include(f => f.ID_FormaPagoNavigation)
+                .OrderByDescending(f => f.Fecha)
                 .ToListAsync();
             return View(facturas);
         }
@@ -146,6 +147,15 @@ namespace Ing_Soft.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            // Obtener detalles asociados a la factura
+            var detalles = await _context.DetalleFactura
+                .Where(d => d.ID_Factura == id)
+                .ToListAsync();
+
+            // Eliminar los detalles
+            _context.DetalleFactura.RemoveRange(detalles);
+
+            // Eliminar la factura
             var factura = await _context.Factura.FindAsync(id);
             if (factura != null)
             {
@@ -156,9 +166,35 @@ namespace Ing_Soft.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
         private bool FacturaExists(int id)
         {
             return _context.Factura.Any(e => e.ID_Factura == id);
         }
+
+
+        // Metodo GET: para mostrar el detalle de la factura completo
+        public async Task<IActionResult> VerDetalleFactura(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var detalles = await _context.DetalleFactura
+                .Include(d => d.ID_ProductoNavigation)
+                .Where(d => d.ID_Factura == id)
+                .ToListAsync();
+
+            if (detalles == null || detalles.Count == 0)
+            {
+                return NotFound("No se encontraron detalles para esta factura.");
+            }
+
+            return View(detalles); 
+        }
+
+
+
     }
 }

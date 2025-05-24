@@ -290,5 +290,30 @@ function mostrarMensaje(texto) {
 }
 
 
+
+
+function filtrarProductos() {
+        const textoBusqueda = document.getElementById('busqueda').value.toLowerCase().trim();
+        const categoriaSeleccionada = document.getElementById('select-categoria-todos').value;
+
+        document.querySelectorAll('#carta-container .carta-rodeo').forEach(carta => {
+            const nombre = carta.querySelector('.titulo-carta p').textContent.toLowerCase();
+            const categoriaProducto = carta.getAttribute('data-categoria');
+
+            const cumpleBusqueda = nombre.includes(textoBusqueda);
+            const cumpleCategoria = categoriaSeleccionada === 'todos' || categoriaProducto === categoriaSeleccionada;
+
+            if (cumpleBusqueda && cumpleCategoria) {
+                carta.style.display = '';
+            } else {
+                carta.style.display = 'none';
+            }
+        });
+    }
+
+    // Agregar event listeners a select y buscador
+    document.getElementById('select-categoria-todos').addEventListener('change', filtrarProductos);
+    document.getElementById('busqueda').addEventListener('input', filtrarProductos);
+
 </script>
 

@@ -192,17 +192,20 @@ $(document).ready(function () {
         const $carta = $(this).closest('.carta-rodeo');
         const id = parseInt($carta.data('id'));
         const cantidadSeleccionada = parseInt($carta.find('.cantidad-select').val());
+        const precioTexto = $carta.find('.precio-carta p').text(); 
+        const precioUnitario = parseFloat(precioTexto.replace('Costo: $', ''));
 
         const itemExistente = carrito.find(item => item.id === id);
 
         if (itemExistente) {
             itemExistente.cantidad += cantidadSeleccionada;
         } else {
-            carrito.push({ id: id, cantidad: cantidadSeleccionada });
+            carrito.push({ id: id, cantidad: cantidadSeleccionada, precioUnitario: precioUnitario });
         }
 
         actualizarCarrito();
     });
+
 });
 
 $(document).on('click', '.eliminar-producto', function () {

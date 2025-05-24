@@ -24,7 +24,11 @@ namespace Ing_Soft.Controllers
         // GET: OrdenCompra
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrdenCompra.ToListAsync());
+            var ordenesCompra = await _context.OrdenCompra
+                .Include(o => o.ID_ProveedorNavigation)
+                .OrderByDescending(o => o.Fecha)
+                .ToListAsync();
+            return View(ordenesCompra);
         }
 
         // GET: OrdenCompra/Details/5
@@ -141,6 +145,11 @@ namespace Ing_Soft.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            // Obtener todos los detalles relacionados con la orden
+            var detalles = _context.DetalleOrdenCompra.Where(d => d.ID_OrdenCompra == id);
+            _context.DetalleOrdenCompra.RemoveRange(detalles); // eliminar todos los detalles
+
+            // Obtener la orden a eliminar
             var ordenCompra = await _context.OrdenCompra.FindAsync(id);
             if (ordenCompra != null)
             {
@@ -155,5 +164,34 @@ namespace Ing_Soft.Controllers
         {
             return _context.OrdenCompra.Any(e => e.ID_OrdenCompra == id);
         }
+
+
+
+        // Metodo GET: para mostrar el detalle de la orden de compra completo
+        public async Task<IActionResult> VerDetalleOrdenCompra(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var detalles = await _context.DetalleOrdenCompra
+                .Include(d => d.ID_ProductoNavigation)
+                .Where(d => d.ID_OrdenCompra == id)
+                .ToListAsync();
+
+            if (detalles == null || detalles.Count == 0)
+            {
+                return NotFound("No se encontraron productos en esta orden.");
+            }
+
+            return View(detalles); // ← devolvés directamente la lista de DetalleOrdenCompra
+        }
+
+
+
+
+
+
     }
 }

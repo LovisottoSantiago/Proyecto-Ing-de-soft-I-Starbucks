@@ -51,12 +51,66 @@
 
             <div class="total-carrito">
                 <h4>Total: $<span id="total-carrito">0</span></h4>
-             </div>
+            </div>
         <div class="carrito-comprar-container">
             <button id="boton-comprar">Comprar</button>
         </div>
 
 
+
+        <div id="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index: 999;"></div>
+
+
+<!-- Modal de carga para compra -->
+<div id="modal-cargando" style="display: none; padding: 20px; background: white; border: 1px solid #ccc; position: fixed; top: 40%; left: 50%; transform: translate(-50%, -40%); z-index: 1001; text-align: center;">
+    <h4 style="color:black;">Procesando tu orden...</h4>    
+    <div class="loader"></div>
 </div>
+
+
+
+
+
+
+<script>
+document.getElementById('boton-comprar').addEventListener('click', function () {
+    if (carrito.length === 0) {
+        alert("El carrito está vacío");
+        return;
+    }
+
+    // Armar orden compra para enviar al backend con lo que pide el controller
+    const orden = carrito.map(item => ({
+        ID_Producto: item.id,
+        Cantidad: item.cantidad,
+        PrecioUnitario: item.precioUnitario
+    }));
+
+    $('#modal-cargando').fadeIn();
+    $.ajax({
+        url: '/Proveedor/RealizarOrdenCompra',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(orden),
+        success: function (response) {
+            alert("Orden de compra generada con éxito. N°: " + response.idOrdenCompra);
+            carrito = [];
+            actualizarCarrito();
+            location.reload(); // Opcional para limpiar vista
+        },
+        error: function (xhr) {
+            alert("Error al generar la orden: " + xhr.responseText);
+        }
+    });
+});
+
+
+
+
+
+</script>
+
+
+
 
 
