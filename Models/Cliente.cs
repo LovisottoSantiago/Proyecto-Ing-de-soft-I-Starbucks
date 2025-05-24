@@ -15,5 +15,9 @@ public partial class Cliente
     public string? Telefono { get; set; }
     public string? Direccion { get; set; }
 
+    [Required]
+    [DataType(DataType.Password)]
+    public string Contrasenia { get; set; } = null!;
+
     public virtual ICollection<Factura> Facturas { get; set; } = new List<Factura>();
 }

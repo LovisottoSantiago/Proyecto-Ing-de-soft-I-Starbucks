@@ -25,6 +25,9 @@
                     @Html.DisplayNameFor(model => model.ID_Cliente)
                 </th>
                 <th>
+                    Cliente
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Total)
                 </th>
                 <th>
@@ -45,6 +48,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ID_Cliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_ClienteNavigation.Nombre)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Total)

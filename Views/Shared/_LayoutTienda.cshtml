@@ -38,6 +38,33 @@
                         <li class="nav-item">
                             <a class="nav-link"  asp-area="" asp-controller="Tienda" asp-action="Index">TIENDA</a>
                         </li>
+                        @{
+                                    var nombreCompleto = Context.Session.GetString("nombre");
+                                    var primerNombre = !string.IsNullOrEmpty(nombreCompleto) 
+                                        ? nombreCompleto.Split(' ')[0] 
+                                        : null;
+                                }
+                                @if (!string.IsNullOrEmpty(primerNombre))
+                                {
+                                    <li class="nav-item" style="position: relative; cursor: pointer;">
+                                        <span class="nav-link">
+                                            Hola, @primerNombre
+                                        </span>
+                                        <form method="post" asp-controller="Home" asp-action="Logout" class="logout-form" style="display: none; position: absolute; top: 100%; left: 0; border: 1px solid #ccc; padding: 5px; z-index: 100;">
+                                            <button type="submit" class="btn btn-link" style="padding: 0; margin: 0; border: none; background: none;">
+                                                Cerrar sesión
+                                            </button>
+                                        </form>
+                                    </li>
+                    }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <button type="button" class="nav-link" onclick="showLoginUsuario()" style="background: none; border: none;">
+                                            Iniciar sesión
+                                        </button>
+                                    </li>
+                                }
                     </ul>
                     <ul class="navbar-nav ms-auto list-unstyled d-flex align-items-center" style="gap: 10px;">
                          <li class="nav-item d-flex align-items-center" style="margin-left: 10px;">
@@ -94,6 +121,68 @@
         </div>
     </div>
 
+
+
+    <div id="login-usuario-container">
+        <div class="close-button"> 
+            <button type="button" onclick="closeFormU()">&times;</button> </div>
+        <div>
+            <form class="login-form" asp-action="LoginUsuario" asp-controller="Home" method="post">
+                <h2>Iniciar sesión de Usuario</h2>
+
+                <div class="input-block">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="Ingresá tu correo" required>
+                </div>
+
+                <div class="input-block">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required>
+                </div>
+
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </div>
+        <h1>¿No tenés usuario?</h1>
+            <p>
+                <a href="#" onclick="showRegistroUsuario(); return false;">Registrate acá</a>
+            </p>
+        </div>
+
+        <div id="register-usuario-container">
+            <div class="close-button"> 
+                <button type="button" onclick="closeFormR()">&times;</button> 
+            </div>
+            <div>
+                <form class="register-form" asp-action="RegistroUsuario" asp-controller="Home" method="post">
+                    <div class="input-block">
+                        <label for="nombreCompleto">Nombre completo</label>
+                        <input type="text" id="nombreCompleto" name="nombreCompleto" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Registrarse</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -107,6 +196,36 @@
         console.log("closeForm");
         const loginContainer = document.getElementById("login-container");
         loginContainer.style.display = "none";
+    }
+
+   function closeFormU() {
+        console.log("closeForm");
+        const loginContainer = document.getElementById("login-usuario-container");
+        loginContainer.style.display = "none";
+    }
+
+    function closeFormR() {
+        console.log("closeForm");
+        const registerContainer = document.getElementById("register-usuario-container");
+        registerContainer.style.display = "none";
+    }
+
+    function showLoginUsuario() {
+    const loginContainer = document.getElementById("login-usuario-container");
+    if (loginContainer.style.display === "none" || loginContainer.style.display === "") {
+        loginContainer.style.display = "block"; // Muestra el formulario
+    } else {
+        loginContainer.style.display = "none"; // Oculta el formulario
+    }
+}
+    function showRegistroUsuario() {
+        const registerContainer = document.getElementById("register-usuario-container");
+        if (registerContainer.style.display === "none" || registerContainer.style.display === "") {
+            registerContainer.style.display = "block"; // Muestra el formulario
+            closeFormU();
+        } else {
+            registerContainer.style.display = "none"; // Oculta el formulario
+        }
     }
 </script>
 

@@ -1,0 +1,4 @@
+Para hacer el finde:
+1-Vista Cliente : Controlador, Modelo y Vista, encargado de mostrarle al cliente los productos que podr´
+2-Carrito de compra controller.
+3-Diseño de login (mejorar), diseño de Vista Cliente, Diseño de carrito de compra.

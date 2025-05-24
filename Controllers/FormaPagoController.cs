@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Ing_Soft.Data;
 using Ing_Soft.Models;
 using Ing_Soft.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ing_Soft.Controllers
 {
@@ -155,5 +156,6 @@ namespace Ing_Soft.Controllers
         {
             return _context.FormaPago.Any(e => e.ID_FormaPago == id);
         }
+
     }
 }

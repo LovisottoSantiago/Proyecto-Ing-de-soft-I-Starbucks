@@ -22,6 +22,7 @@ namespace Ing_Soft.Controllers
         }
 
         // GET: Cobranza
+        
         public async Task<IActionResult> Index()
         {
             var cobranzas = await _context.Cobranza

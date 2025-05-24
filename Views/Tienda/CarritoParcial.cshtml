@@ -59,7 +59,7 @@
             <h4 style="color:black;">Seleccioná medio de pago:</h4>
             <button class="boton-pago" data-pago="1">Efectivo</button>
             <button class="boton-pago" data-pago="2">Tarjeta</button>
-            <button class="boton-pago" data-pago="3">Transferencia</button>
+            <button class="boton-pago" data-pago="3">Transferencia</button> 
         </div>
 
         <div id="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index: 999;"></div>
@@ -77,6 +77,9 @@
 
 
 <script>
+
+
+    
 document.getElementById('boton-comprar').addEventListener('click', function () {
     // Mostrar modal de forma de pago
     document.getElementById('modal-pago').style.display = 'block';
@@ -87,32 +90,36 @@ document.getElementById('boton-comprar').addEventListener('click', function () {
 $('.boton-pago').click(function () {
     const formaPago = $(this).data('pago'); // 1 = efectivo, 2 = tarjeta, etc.
 
-    // Armar detalles
     const detalles = carrito.map(item => ({
         ID_Producto: item.id,
         Cantidad: item.cantidad
     }));
 
-    // Enviar venta al backend
     cerrarModalPago();
-    $('#modal-cargando').fadeIn();  // Mostrar modal de carga
+
+    $('#modal-cargando').fadeIn();
 
     $.ajax({
         url: '/Tienda/RealizarVenta',
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(detalles),
+        dataType: 'json',
+        data: JSON.stringify({ detalles: detalles, formaPago: formaPago }), 
         success: function (response) {
+            console.log("Respuesta completa:", response);
             alert(response.mensaje + '\nFactura N°: ' + response.idFactura + '\nTotal: $' + response.total);
             carrito = [];
             actualizarCarrito();
         },
+
         error: function (xhr) {
             alert("Error al realizar la compra: " + xhr.responseText);
             cerrarModalPago();
+            $('#modal-cargando').fadeOut();
         }
     });
 });
+
 
 
 

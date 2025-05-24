@@ -26,6 +26,7 @@ namespace Ing_Soft.Controllers
         {
             var facturas = await _context.Factura
                 .Include(f => f.ID_FormaPagoNavigation)
+                .Include(f => f.ID_ClienteNavigation)
                 .OrderByDescending(f => f.Fecha)
                 .ToListAsync();
             return View(facturas);
