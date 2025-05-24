@@ -115,6 +115,17 @@ namespace Ing_Soft.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult ObtenerFormasPago()
+        {
+            var formasPago = _context.FormaPago
+                .Select(f => new { id = f.ID_FormaPago, descripcion = f.Descripcion })
+                .ToList();
+
+            return Json(formasPago);
+        }
+
+
 
 
     }
