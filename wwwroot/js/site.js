@@ -1,4 +1,7 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+﻿$('input').attr('autocomplete','off');
+
+
+document.addEventListener('DOMContentLoaded', () => {
     const filtro = document.getElementById('select-categoria');
     const cartas = document.querySelectorAll('.carta-rodeo');
 
