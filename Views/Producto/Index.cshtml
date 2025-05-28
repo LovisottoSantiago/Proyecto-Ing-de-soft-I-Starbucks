@@ -7,9 +7,11 @@
 
 <h2 class="carteles-admin">Productos</h2>
 
-<p style="text-align: center;">
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="caja-boton-crear">
+    <button class="boton-crear">
+        <a asp-action="Create">Create New</a>
+    </button>
+</div>
 
 
 <div class="contenedor-tabla-general">
@@ -85,8 +87,13 @@
                         @item.Proveedor?.Nombre
                     </td>            
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.ID_Producto">Delete</a>
+                        <button class="boton-vuelta boton-opciones-product">
+                            <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a>
+                        </button>
+                        
+                        <button class="boton-vuelta boton-opciones-product">
+                            <a asp-action="Delete" asp-route-id="@item.ID_Producto">Delete</a>
+                       </button>                     
                     </td>
                 </tr>
         }
