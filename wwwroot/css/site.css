@@ -108,7 +108,7 @@ justify-self: end;
   background-color: #fff;
   border: 2px solid #ccc;
   border-radius: 10px;
-  padding: 30px;
+  padding: 0px 30px 10px 30px; /*aca era todos los margin con 30 px*/
   width: 300px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
   z-index: 1000;
@@ -120,13 +120,14 @@ justify-self: end;
   flex-direction: column;
 }
 
+/*
 .input-block {
   margin-bottom: 15px;
 }
-
+*/
 .input-block label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-top: 10px; /*aca antes era margin bottom 5px */
 }
 
 .input-block input {
@@ -136,6 +137,9 @@ justify-self: end;
   width: 100%;
   box-sizing: border-box;
 }
+
+/* ACA TENGO QUE LABURAR YO, MATEO HACE EL RESPONSIVE*/
+
 
 #register-usuario-container button[type="submit"] {
   background-color: #00704A;
@@ -168,6 +172,9 @@ justify-self: end;
 #register-usuario-container .close-button button:hover {
   color: #000;
 }
+
+
+/*HASTA ACA */
 
 li.nav-item:hover .logout-form {
   display: block !important;
@@ -416,8 +423,6 @@ footer .container h5{
     100% { transform: rotate(360deg); }
 }
 
-  
-
 
 
 .tablecontainer {
@@ -452,9 +457,9 @@ footer .container h5{
 
 .table-controladores th,
 .table-controladores td {
-    padding: 0.75rem;
+    padding: 0.75rem 0rem 0.75rem 0.75rem;
     border: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
     vertical-align: middle;
 }
 
@@ -554,3 +559,153 @@ footer .container h5{
     transform: rotate(360deg);
   }
 } 
+
+/* ACA VAN LOS ESTILADOS DE LAS VISTAS DE LA PARTE DE ADMIN*/
+
+/*primero los estilados de la parte de proveedor, todo lo que es agregar, etc etc*/
+
+/*LA GRAN MAYORIA DE ESTILOS QUE ESTAN ACA SIRVEN PARA CREATE,EDIT Y INDEX (PQ COMPARTEN ESTRUCTURA SIMILAR)*/
+
+.caja-boton-vuelta{
+  justify-content: center;
+  display: flex;
+  padding-top: 2rem;
+  height: 5rem;
+}
+
+.boton-vuelta{
+  border-radius: 2rem;
+  border:0px solid #00704a;
+  background-color: #00704a;
+  width: 7rem;
+}
+
+.boton-vuelta a{
+text-decoration: none;
+color: white;
+
+}
+
+.subtitulo-seccion{
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 2rem 0 1rem 0;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.contenido-vista-admin{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.control-label{
+  text-align: center;
+  display: flex;
+  justify-self: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.form-group{
+text-align: center;
+}
+
+/*ESTE CENTRA LOS PLACE HOLDER O TEXTO DENTRO DE IMPUTS*/
+.form-control{
+  text-align: center;
+}
+
+/*ESTE ES EL BOTON AZUL DEL FORM */
+.boton-accion{
+  padding-top: 1rem;
+  
+}
+
+/*SI BIEN CREE LA CLASE BOTON-ACCION NO SE APLICA EL BORDER RADIUS SI NO HAGO REFERENCIA AL IMPUT*/
+.boton-accion input{
+  border-radius: 2rem;
+}
+
+
+.caja-boton-crear{
+  justify-content: center;
+  display: flex;
+  border: 0px solid #00704A;
+}
+
+.boton-crear{
+  border-radius: 20px;
+  justify-self: center;
+  height: 2rem;
+  width: 7rem;
+  background-color: #00704A;
+  border: none;
+}
+
+.boton-crear a{
+  text-decoration: none;
+  color:#ffffff;
+
+}
+
+/*ESTE ESTILADO ES DE LA VISTA DE ADMIN DE LA LISTA DE BOTONES*/
+
+.boton-opciones-product{
+  margin: 0.5rem;
+}
+
+.boton-edit{
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.boton-edit button{
+border-radius: 1rem;
+}
+
+.boton-edit a{
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+/*LOS ESTILOS QUE ESTAN DESDE ESTE COMENTARIO PARA ABAJO SON PARA DETAILS Y DELETE, QUE TIENEN ESTRUCTURA SIMILAR*/
+
+.boton-delete{
+  display: flex;
+  justify-content: center;
+
+}
+
+.boton-delete input{
+  border-radius: 1rem;
+}
+
+.subtitulo-delete-details{
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.prueba{
+  justify-content: center;
+
+}
+
+.contenido-delete-details-vista-admin{
+  justify-content: center;
+  display: flex;
+}
+
+/*boton registro login*/
+
+.boton-registro a{
+  text-decoration: none;
+  color: #ffffff;
+
+}
+

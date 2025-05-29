@@ -37,6 +37,7 @@
     display: flex;
     padding: 10px;
     object-fit: cover;
+    border-radius: 2rem;
 }
 
 .titulo-arriba{
@@ -92,5 +93,26 @@
     font-style: bold;
     font-size: 6em;
 }
+
+}
+
+/*ACA VA A IR EL ESTILADO DE LA INFO DE CONTACTO*/
+
+#titulo-realizadores{
+    padding: 2rem 0 0rem 0;
+}
+
+.informacion-de-contacto{
+    padding: 2rem 0 1rem 0 ;
+    display: flex;
+    justify-content: space-around;
+}
+
+.paginas span{
+    margin: 1rem;
+}
+
+.integrantes a{
+   color: #000;
 
 }

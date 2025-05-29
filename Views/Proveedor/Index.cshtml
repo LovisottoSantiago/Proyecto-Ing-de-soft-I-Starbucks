@@ -7,9 +7,11 @@
 
 <h2 class="carteles-admin">Proveedores</h2>
 
-<p style="text-align: center;">
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="caja-boton-crear">
+    <button class="boton-crear">
+        <a asp-action="Create">Create New</a>
+    </button>
+</div>
 
 <div class="contenedor-tabla-general">
     <table class="table-controladores">
@@ -46,9 +48,17 @@
                     @Html.DisplayFor(modelItem => item.Direccion)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID_Proveedor">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID_Proveedor">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID_Proveedor">Delete</a>
+                    <button class="boton-vuelta">
+                        <a asp-action="Edit" asp-route-id="@item.ID_Proveedor">Edit</a> 
+                    </button>
+                    
+                    <button class="boton-vuelta">
+                        <a asp-action="Details" asp-route-id="@item.ID_Proveedor">Details</a> 
+                    </button>
+                    
+                    <button class="boton-vuelta">
+                        <a asp-action="Delete" asp-route-id="@item.ID_Proveedor">Delete</a>
+                    </button>
                 </td>
             </tr>
     }
