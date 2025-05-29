@@ -5,11 +5,15 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Delete</h1>
+<div class="subtitulo-seccion">
+    <h3>Are you sure you want to delete this?</h3>
+</div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
+<div class="subtitulo-delete-details">
     <h4>OrdenCompra</h4>
+</div>
+
+<div class="contenido-delete-details-vista-admin"> 
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -32,9 +36,20 @@
         </dd>
     </dl>
     <hr />
+</div>
+
+<div>
     <form asp-action="Delete">
         <input type="hidden" asp-for="ID_OrdenCompra" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <div class="boton-delete">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+        
+        <div class="caja-boton-vuelta">
+            <button class="boton-vuelta"> 
+                <a asp-action="Index">Back to List</a>
+            </button>
+        </div>
     </form>
 </div>
+

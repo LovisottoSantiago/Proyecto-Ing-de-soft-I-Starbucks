@@ -5,12 +5,15 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="subtitulo-seccion">
+    <h4>Producto</h4>
+</div>
 
-<h4>Producto</h4>
 <hr />
-<div class="row">
+<div class="contenido-vista-admin">
+
     <div class="col-md-4">
+
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID_Producto" />
@@ -63,15 +66,17 @@
             </div>
                       
             <hr />
-            <div class="form-group">
+            <div class="form-group boton-accion">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="caja-boton-vuelta">
+    <button class="boton-vuelta">
+        <a asp-action="Index">Back to List</a>
+    </button>
 </div>
 
 
