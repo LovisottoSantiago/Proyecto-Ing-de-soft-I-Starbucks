@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home";
 }
 
+
+
 <link rel="stylesheet" href="~/css/Home.css" asp-append-version="true" />
 
 
@@ -27,7 +29,7 @@
 
 <footer>
     <div class="caja-realizadores">
-    <h4 id="titulo-realizadores">Realizadores</h4>
+    <h4 id="titulo-realizadores">Desarrolladores</h4>
     <div class="informacion-de-contacto">
         
         <div class="integrantes">
@@ -121,6 +123,7 @@
         </div>
     </div>
 </div>
+
 </footer>
 
 <!--
@@ -133,3 +136,12 @@
     </form>
 </div>
 -->
+
+<script>
+    @if (TempData["Error"] != null)
+    {
+        <text>
+        alert("Datos incorrectos.");
+        </text>
+    }
+</script>

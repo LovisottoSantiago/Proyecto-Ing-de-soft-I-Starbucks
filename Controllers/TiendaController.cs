@@ -125,6 +125,12 @@ namespace Ing_Soft.Controllers
             return Json(formasPago);
         }
 
+        [HttpGet]
+        public IActionResult EsCliente()
+        {
+            var idClienteSesion = HttpContext.Session.GetInt32("idCliente");
+            return Json(new { esCliente = idClienteSesion.HasValue });
+        }
 
 
 

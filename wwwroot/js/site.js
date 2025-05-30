@@ -61,11 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('a.nav-link, a.dropdown-item').forEach(link => {
         link.addEventListener('click', function (e) {
-            if (link.classList.contains('dropdown-toggle')) {
-                // Si es el toggle del dropdown, no mostrar loader
+            if (link.classList.contains('dropdown-toggle') || link.target === '_blank' || link.getAttribute('href') === '#') {
                 return;
             }
-            // Para cualquier otro link, mostrar loader
             document.getElementById('loader').style.display = 'flex';
         });
     });

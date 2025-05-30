@@ -79,7 +79,14 @@
 
 
         
-    document.getElementById('boton-comprar').addEventListener('click', function () {
+document.getElementById('boton-comprar').addEventListener('click', function () {
+    $.get('/Tienda/EsCliente', function (response) {
+        if (!response.esCliente) {
+            alert("Debe iniciar sesión como cliente para realizar una compra.");
+            return; // No permitir continuar
+        }
+
+        // Si es cliente, continuar con la lógica de obtener formas de pago
         $.get('/Tienda/ObtenerFormasPago', function (formasPago) {
             const contenedor = $('#contenedor-formas-pago');
             contenedor.empty();
@@ -87,7 +94,6 @@
                 contenedor.append(`<button class="boton-pago" data-pago="${fp.id}">${fp.descripcion}</button>`);
             });
 
-            // Re-vinculamos el evento click de los botones porque son generados dinámicamente
             $('.boton-pago').off('click').on('click', function () {
                 const formaPago = $(this).data('pago');
 
@@ -122,6 +128,7 @@
             $('#modal-overlay').show();
         });
     });
+});
 
 
 
