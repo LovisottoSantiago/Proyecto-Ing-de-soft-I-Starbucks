@@ -103,7 +103,7 @@
 }
 
 .informacion-de-contacto{
-    padding: 2rem 0 1rem 0 ;
+    padding: 2rem 0 1rem 0;
     display: flex;
     justify-content: space-around;
 }
@@ -111,8 +111,26 @@
 .paginas span{
     margin: 1rem;
 }
-
-.integrantes a{
-   color: #000;
+.paginas li a{
+    color: #000;
 
 }
+
+.integrantes a{
+   color: #fff;
+
+}
+.caja-realizadores{
+    padding: 1rem;
+    margin-top: 5rem;
+    background-color: #00704A;
+    color: #ffffff;
+    font-family: "Lexend Zetta", sans-serif;
+}
+
+
+
+
+
+
+
