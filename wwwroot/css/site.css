@@ -112,7 +112,7 @@ html {
   width: 300px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  font-family: "Sansita Swashed", cursive;
+ 
 }
 
 .register-form {
@@ -577,9 +577,19 @@ footer .container h5 {
   width: 7rem;
 }
 
+.boton-vuelta:hover{
+  background-color: #012c1c;
+  cursor: pointer;
+}
+
 .boton-vuelta a {
   text-decoration: none;
   color: white;
+}
+
+.caja-boton-vuelta :hover{
+  background-color: #012c1c;
+  cursor: pointer;
 }
 
 .subtitulo-seccion {
@@ -623,6 +633,16 @@ footer .container h5 {
   border-radius: 2rem;
 }
 
+.boton-accion :hover{
+  background-color: #0b3777;
+  cursor: pointer;
+}
+
+.boton-edit button:hover{
+  background-color: #0b3777;
+  cursor: pointer;
+}
+
 .caja-boton-crear {
   justify-content: center;
   display: flex;
@@ -636,6 +656,11 @@ footer .container h5 {
   width: 7rem;
   background-color: #00704a;
   border: none;
+}
+
+.boton-crear:hover{
+  background-color: #012c1c;
+  cursor: pointer;
 }
 
 .boton-crear a {
@@ -672,6 +697,11 @@ footer .container h5 {
 
 .boton-delete input {
   border-radius: 1rem;
+}
+
+.boton-delete input:hover{
+  background-color: #a10211;
+  
 }
 
 .subtitulo-delete-details {
