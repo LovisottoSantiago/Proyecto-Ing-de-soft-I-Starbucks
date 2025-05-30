@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Create</h1>
+<div class="subtitulo-seccion">
+    <h4>Proveedor</h4>
+</div>
 
-<h4>FormaPago</h4>
 <hr />
-<div class="row">
+<div class="contenido-vista-admin">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -19,15 +20,17 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <hr />
-            <div class="form-group">
+            <div class="form-group boton-accion">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="caja-boton-vuelta">
+    <button class="boton-vuelta">
+        <a asp-action="Index">Back to List</a>
+    </button>
 </div>
 
 @section Scripts {

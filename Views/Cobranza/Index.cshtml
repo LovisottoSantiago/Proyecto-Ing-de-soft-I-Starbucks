@@ -7,9 +7,11 @@
 
 <h2 class="carteles-admin">Cobranzas</h2>
 
-<p style="text-align: center;">
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="caja-boton-crear">
+    <button class="boton-crear">
+        <a asp-action="Create">Create New</a>
+    </button>
+</div>
 
 <div class="contenedor-tabla-general">
     <table class="table-controladores">
@@ -26,6 +28,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.ID_FormaPago)
+                </th>
+                <th>
+                    Acciones
                 </th>
             </tr>
         </thead>
@@ -44,6 +49,17 @@
                 </td>
                 <td>
                     @(item.ID_FormaPagoNavigation != null ? item.ID_FormaPagoNavigation.Descripcion : "")
+                </td>
+                <td>
+                    <button class="boton-vuelta">
+                        <a asp-action="Edit" asp-route-id="@item.ID_Cobranza">Edit</a> 
+                    </button>
+                    <button class="boton-vuelta">
+                        <a asp-action="Details" asp-route-id="@item.ID_Cobranza">Details</a> 
+                    </button>
+                    <button class="boton-vuelta">
+                        <a asp-action="Delete" asp-route-id="@item.ID_Cobranza">Delete</a>
+                    </button>
                 </td>
             </tr>
     }

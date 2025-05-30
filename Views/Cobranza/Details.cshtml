@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Details</h1>
-
-<div>
+<div class="subtitulo-seccion">
     <h4>Cobranza</h4>
+</div>
+
+<div class="contenido-delete-details-vista-admin">
     <hr />
-    <dl class="row">
+    <dl class="col-md-2">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ID_Factura)
         </dt>
@@ -37,7 +38,18 @@
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ID_Cobranza">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <div class="boton-edit">
+            <button class="btn btn-primary">
+                <a asp-action="Edit" asp-route-id="@Model?.ID_Cobranza">Edit</a> 
+            </button>
+        </div>
+    
+    <div class="caja-boton-vuelta">
+        <button class="boton-vuelta">
+            <a asp-action="Index">Back to List</a>
+        </button>
+    </div>
+
 </div>

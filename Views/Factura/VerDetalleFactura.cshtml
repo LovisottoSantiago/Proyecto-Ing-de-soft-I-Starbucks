@@ -2,30 +2,48 @@
 
 @{
     ViewData["Title"] = "Detalle de Factura";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Detalle de Factura</h2>
+<div class="subtitulo-seccion">
+    <h4>Detalle de Factura</h4>
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<!-- Estaría bueno agregar acá un "ID_Factura: XX" pero no sé cómo -->
+
+<div class="contenedor-tabla-general">
+    <table class="table-controladores">
+        <thead>
             <tr>
-                <td>@item.ID_ProductoNavigation?.Nombre</td>
-                <td>@item.Cantidad</td>
-                <td>@item.PrecioUnitario</td>
-                <td>@((item.Cantidad * item.PrecioUnitario))</td>
+                <th>
+                    Producto
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Precio Unitario
+                </th>
+                <th>
+                    Subtotal
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
-
-<a asp-action="Index" class="btn btn-secondary">Volver a Facturas</a>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID_ProductoNavigation?.Nombre</td>
+                    <td>@item.Cantidad</td>
+                    <td>@item.PrecioUnitario</td>
+                    <td>@((item.Cantidad * item.PrecioUnitario))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="caja-boton-vuelta">
+    <button class="boton-vuelta">
+        <a asp-action="Index">Back to List</a>
+    </button>
+</div>
