@@ -9,7 +9,7 @@
                     <th>Producto</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
-                    <th>Total</th>
+                    <th>Total</th> 
                 </tr>
             </thead>
             <tbody>
@@ -21,20 +21,20 @@
                         <tr class="fila-carrito">
                             <td>@nombre</td>
                             <td id="precio-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
-                           <td id="cantidad-carrito-@producto.ID_Producto">
+                            <td id="cantidad-carrito-@producto.ID_Producto">
                                 <span class="cantidad-texto">1</span>
-                                    <select class="select-cantidad" style="display: none;">
-                                       @for (int i = 1; i <= 5; i++)
-                                            {
-                                                var selected = i == 1 ? "selected" : "";
-                                                @: <option value="@i" @selected>@i</option>
-                                            }
-                                    </select>
+                                <select class="select-cantidad" style="display: none;">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        var selected = i == 1 ? "selected" : "";
+                                        @: <option value="@i" @selected>@i</option>
+                                    }
+                                </select>
                                 <img src='@Url.Content("~/Img/9143985.png")' class="editar-cantidad" alt="Editar cantidad" />
                             </td>
-                            <td id="total-carrito-@producto.ID_Producto">@producto.PrecioUnitario</td>
-                            <td class="eliminar">
-                                <button class="eliminar-producto" data-id="@producto.ID_Producto">X</button>
+                            <td>
+                                <span id="total-carrito-@producto.ID_Producto">@producto.PrecioUnitario</span>
+                                <button class="eliminar-producto" data-id="@producto.ID_Producto" style="margin-left:10px;">X</button>
                             </td>
                         </tr>
                     }
@@ -134,3 +134,35 @@
 </script>
 
 
+
+<style>
+table .eliminar-producto {
+background-color: #ff4d4d;
+border: none;
+color: white;
+padding: 3px 7px;
+cursor: pointer;
+border-radius: 3px;
+font-weight: bold;
+}
+
+table .eliminar-producto:hover {
+background-color: #e60000;
+}
+
+.editar-cantidad {
+width: 18px;
+height: 18px;
+margin-left: 6px;
+cursor: pointer;
+vertical-align: middle;
+border-radius: 20%;
+background-color: white;
+transition: transform 0.2s ease;
+}
+
+.editar-cantidad:hover {
+transform: scale(1.2);
+}
+
+</style>

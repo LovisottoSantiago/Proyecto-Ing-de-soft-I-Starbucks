@@ -705,3 +705,11 @@ footer .container h5 {
   margin: 0 auto;
 }
 
+
+/* Centrar las tablas */
+.table-controladores th,
+.table-controladores td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}

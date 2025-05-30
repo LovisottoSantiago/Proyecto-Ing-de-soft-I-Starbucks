@@ -130,7 +130,7 @@ namespace Ing_Soft.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(producto);
-        }        
+        }
 
         // GET: Producto/Delete/5
         [RolAuthorize("Administrador")]
@@ -173,5 +173,31 @@ namespace Ing_Soft.Controllers
         {
             return _context.Producto.Any(e => e.ID_Producto == id);
         }
+        
+
+
+        // POST: Producto/ToggleEstado/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [RolAuthorize("Administrador")]
+        public async Task<IActionResult> ToggleEstado(int id)
+        {
+            var producto = await _context.Producto.FindAsync(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            // Cambia el estado al valor contrario
+            producto.Estado = !producto.Estado;
+
+            _context.Update(producto);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
     }
 }

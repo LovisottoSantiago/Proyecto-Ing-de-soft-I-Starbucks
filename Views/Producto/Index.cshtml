@@ -74,7 +74,7 @@
                         @Html.DisplayFor(modelItem => item.Stock)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Estado)
+                        @((item.Estado ?? false) ? "Activo" : "Inactivo")
                     </td>
                     <td style="text-align: center;">
                         @* @Html.DisplayFor(modelItem => item.ImagenUrl) *@
@@ -91,9 +91,11 @@
                             <a asp-action="Edit" asp-route-id="@item.ID_Producto">Edit</a>
                         </button>
                         
-                        <button class="boton-vuelta boton-opciones-product">
-                            <a asp-action="Delete" asp-route-id="@item.ID_Producto">Delete</a>
-                       </button>                     
+                        <form asp-action="ToggleEstado" asp-route-id="@item.ID_Producto" method="post" style="display:inline">
+                            <button type="submit" class="boton-vuelta boton-opciones-product" style="color: white;">
+                                @((item.Estado ?? false) ? "Desactivar" : "Activar")
+                            </button>
+                        </form>                 
                     </td>
                 </tr>
         }
@@ -101,3 +103,4 @@
         </table>
     </div>
 </div>
+
