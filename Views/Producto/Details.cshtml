@@ -4,50 +4,52 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";    
 }
-
-<h1>Details</h1>
-
-<div>
+<div class="subtitulo-seccion">
     <h4>Producto</h4>
+</div>
+
+
+<div class="contenido-delete-details-vista-admin">
+  
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl class="col">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.PrecioUnitario)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.PrecioUnitario)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Stock)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Stock)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Estado)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Estado)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.ImagenUrl)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.ImagenUrl)
         </dd>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Categoria)
         </dd>
     </dl>

@@ -5,28 +5,32 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Details</h1>
+<!-- esta pagina no se ve-->
 
-<div>
-    <h4>OrdenCompra</h4>
+<div class="subtitulo-delete-details">
+   <h4>OrdenCompra</h4>
+</div>
+
+<div class="contenido-delete-details-vista-admin">
+ 
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl class="col">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Fecha)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Model.Fecha?.ToString("dd/MM/yyyy  HH:mm:ss")
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.ID_Proveedor)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.ID_Proveedor)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Total)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Total)
         </dd>
     </dl>
