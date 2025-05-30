@@ -693,6 +693,7 @@ footer .container h5 {
 .boton-delete {
   display: flex;
   justify-content: center;
+  padding-top: 1rem;
 }
 
 .boton-delete input {
@@ -715,9 +716,18 @@ footer .container h5 {
 }
 
 .contenido-delete-details-vista-admin {
-  justify-content: center;
-  display: flex;
-  text-align: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    border: solid;
+    width: 30rem;
+    margin: auto;
+    padding: 1rem;
+    border-width: 2px;
+    border-radius: 2rem;
+    background-color: #005f3a;
+    color: #fff;
+    
 }
 
 /*boton registro login*/
