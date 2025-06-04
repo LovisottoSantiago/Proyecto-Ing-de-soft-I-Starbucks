@@ -10,6 +10,7 @@
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Total</th>
+                    <th></th> <!-- Columna para botón eliminar -->
                 </tr>
             </thead>
             <tbody>
@@ -95,6 +96,8 @@ document.getElementById('boton-comprar').addEventListener('click', function () {
         success: function (response) {
             alert("Orden de compra generada con éxito. N°: " + response.idOrdenCompra);
             carrito = [];
+            proveedorActivo = null; // Resetear proveedor activo
+            $('#select-proveedores').val('todos').prop('disabled', false); 
             actualizarCarrito();
             location.reload(); // Opcional para limpiar vista
         },
@@ -114,3 +117,36 @@ document.getElementById('boton-comprar').addEventListener('click', function () {
 
 
 
+
+<style>
+table .eliminar-producto {
+background-color: #ff4d4d;
+border: none;
+color: white;
+padding: 3px 7px;
+cursor: pointer;
+border-radius: 3px;
+font-weight: bold;
+}
+
+table .eliminar-producto:hover {
+background-color: #e60000;
+}
+
+.editar-cantidad {
+width: 18px;
+height: 18px;
+margin-left: 6px;
+cursor: pointer;
+vertical-align: middle;
+border-radius: 20%;
+background-color: white;
+transition: transform 0.2s ease;
+}
+
+.editar-cantidad:hover {
+transform: scale(1.2);
+}
+
+
+</style>

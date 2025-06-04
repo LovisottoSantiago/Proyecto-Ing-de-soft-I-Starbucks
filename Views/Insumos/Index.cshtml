@@ -10,6 +10,8 @@
 
 <div class="contenedor-papu">
 
+    <div id="mensaje-agregado"></div>
+
     <div class="contenedor-inicio">
         <div class="filtro-proveedores">
             @{
@@ -39,6 +41,7 @@
                         <div class="info-carta">   
                             <div class="titulo-carta">
                                 <p>@producto.Nombre</p>        
+                                <p style="font-size: 1rem; color:rgb(59, 59, 59);">Proveedor: @producto.Proveedor?.Nombre</p>
                                 <h2 style="font-size: 1rem; color:green;">Bulto x20</h2>            
                             </div>
                             <div class="precio-carta">
@@ -85,6 +88,8 @@
 let carritoCerradoManualmente = false;
 let carrito = [];
 let carritoVisible = false;
+let proveedorActivo = null;
+
 
 function actualizarCarrito() {
     const ids = carrito.map(item => item.id);
@@ -99,6 +104,13 @@ function actualizarCarrito() {
             actualizarContador();
             actualizarTotal();
             
+            if (carrito.length === 0) {
+                $('#carrito-container').slideUp();
+                carritoVisible = false;
+                proveedorActivo = null;
+                $('#select-proveedores').val('todos').prop('disabled', false);
+                filtrarPorProveedor('todos');
+            }
 
             if (carrito.length > 0) {
                 if (!carritoVisible && !carritoCerradoManualmente) {
@@ -191,9 +203,21 @@ $(document).ready(function () {
     $('.boton-agregar button').click(function () {
         const $carta = $(this).closest('.carta-rodeo');
         const id = parseInt($carta.data('id'));
+        const proveedorId = $carta.data('categoria');
         const cantidadSeleccionada = parseInt($carta.find('.cantidad-select').val());
         const precioTexto = $carta.find('.precio-carta p').text(); 
         const precioUnitario = parseFloat(precioTexto.replace('Costo: $', ''));
+
+
+        if (proveedorActivo === null) {
+                proveedorActivo = proveedorId;
+                $('#select-proveedores').val(proveedorId).prop('disabled', true);
+                filtrarPorProveedor(proveedorId);
+            } else if (proveedorActivo !== proveedorId) {
+                alert("Solo se pueden agregar productos del mismo proveedor.");
+                return;
+            }
+
 
         const itemExistente = carrito.find(item => item.id === id);
 
@@ -204,9 +228,24 @@ $(document).ready(function () {
         }
 
         actualizarCarrito();
+
+        const nombreProducto = $carta.find('.titulo-carta p').first().text().trim();
+        mostrarMensaje(`"Bulto x20 ${nombreProducto}" agregado!`);
+
     });
 
 });
+
+
+function filtrarPorProveedor(idProveedor) {
+    $('#carta-container .carta-rodeo').each(function () {
+        const prodProv = $(this).data('categoria');
+        $(this).toggle(idProveedor === "todos" || prodProv == idProveedor);
+    });
+}
+
+
+
 
 $(document).on('click', '.eliminar-producto', function () {
     const id = $(this).data('id'); // obtiene el ID del producto desde el atributo data-id
@@ -252,6 +291,18 @@ $(document).on('change', '.select-cantidad', function () {
     actualizarCantidadesCarrito();
     actualizarTotal();
 });
+
+
+
+function mostrarMensaje(texto) {
+    const mensaje = $('#mensaje-agregado');
+    mensaje.text(texto);
+    mensaje.stop(true, true).fadeIn(300);  // Mostrar con fadeIn (animación suave)
+    setTimeout(() => {
+        mensaje.fadeOut(300); // Ocultar después de 2 segundos
+    }, 2000);
+}
+
 
 </script>
 

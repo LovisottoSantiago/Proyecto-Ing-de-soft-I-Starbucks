@@ -8,16 +8,17 @@ display: flex;
   padding: 0rem 2.5rem;
 }
 
-.tienda-cartel{
+.tienda-cartel {
     font-family: "Lexend Zetta", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: auto;
-    font-style: bold;
+    font-weight: 500; 
+    font-style: normal;
     font-size: 3.5rem;
-    color:#00754a;
-    padding: 4.5rem 0rem 0rem 0rem;
-    justify-self: center;
+    color: #00754a;
+    padding: 4.5rem 0 0 0;
+    text-align: center; 
+    margin: 0 auto;     
 }
+
 .contenedor-papu {
     display: flex;
     flex-direction: column;
@@ -578,4 +579,36 @@ button#cerrar-carrito {
         transform: translateY(25%);
     }
 }
+
+
+
+table .eliminar-producto {
+background-color: #ff4d4d;
+border: none;
+color: white;
+padding: 3px 7px;
+cursor: pointer;
+border-radius: 3px;
+font-weight: bold;
+}
+
+table .eliminar-producto:hover {
+background-color: #e60000;
+}
+
+.editar-cantidad {
+width: 18px;
+height: 18px;
+margin-left: 6px;
+cursor: pointer;
+vertical-align: middle;
+border-radius: 20%;
+background-color: white;
+transition: transform 0.2s ease;
+}
+
+.editar-cantidad:hover {
+transform: scale(1.2);
+}
+
 
