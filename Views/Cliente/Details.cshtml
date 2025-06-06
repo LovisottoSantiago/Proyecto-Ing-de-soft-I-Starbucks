@@ -11,41 +11,43 @@
 
 <div class="contenido-delete-details-vista-admin">
     <hr />
-    <dl class="col-md-2">
-        <dt class = "col-sm-2">
+    <dl class="col">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Telefono)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Telefono)
         </dd>
-        <dd class = "col-sm-10">
+        <dt class = "col">
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd class = "col">
             @Html.DisplayFor(model => model.Direccion)
         </dd>
     </dl>
 </div>
 <div>
-        <div class="boton-edit">
-            <button class="btn btn-primary">
-                <a asp-action="Edit" asp-route-id="@Model?.ID_Cliente">Edit</a> 
-            </button>
-        </div>
+    <div class="boton-edit">
+        <button class="btn btn-primary">
+            <a asp-action="Edit" asp-route-id="@Model?.ID_Cliente">Edit</a> 
+        </button>
+    </div>
     
     <div class="caja-boton-vuelta">
         <button class="boton-vuelta">
             <a asp-action="Index">Back to List</a>
         </button>
     </div>
-
 </div>

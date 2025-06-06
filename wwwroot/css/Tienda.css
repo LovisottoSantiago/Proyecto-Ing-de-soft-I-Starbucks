@@ -8,17 +8,16 @@ display: flex;
   padding: 0rem 2.5rem;
 }
 
-.tienda-cartel {
+.tienda-cartel{
     font-family: "Lexend Zetta", sans-serif;
-    font-weight: 500; 
-    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: bold;
     font-size: 3.5rem;
-    color: #00754a;
-    padding: 4.5rem 0 0 0;
-    text-align: center; 
-    margin: 0 auto;     
+    color:#00754a;
+    padding: 4.5rem 0rem 0rem 0rem;
+    justify-self: center;
 }
-
 .contenedor-papu {
     display: flex;
     flex-direction: column;
@@ -459,7 +458,7 @@ button#cerrar-carrito {
 
 
 /* Responsive para celular */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     div#carta-container,
     .contenedor-papu {
       flex-direction: column;
@@ -469,6 +468,7 @@ button#cerrar-carrito {
     .carta-rodeo {
       flex: 1 1 100%;
       margin: 8px 0;
+      display: flex;
       justify-content: center;
     }
   
@@ -506,6 +506,37 @@ button#cerrar-carrito {
       justify-content: center;
       margin-top: 0.75rem;
     }
+
+    .tienda-cartel{
+        padding-top: 3rem;
+    }
+    div#contenido-carrito {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        align-items: flex-start;
+    }
+
+
+    div#carrito {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: flex-start;
+        color: white;
+        align-items: center;
+        width: 30rem;
+   }
+
+    div#carrito-container .table {
+    color: white;
+    }
+
   }
   
   /* Opcional para pantallas muy chicas */
@@ -561,7 +592,7 @@ button#cerrar-carrito {
     .tienda-cartel {
         font-size: 2rem;
         text-align: center;
-        padding: 2rem 0 1rem 0;
+        /*padding: 2rem 0 1rem 0;*/
     }
 
     .carta-rodeo {
@@ -579,8 +610,6 @@ button#cerrar-carrito {
         transform: translateY(25%);
     }
 }
-
-
 
 table .eliminar-producto {
 background-color: #ff4d4d;
@@ -611,4 +640,60 @@ transition: transform 0.2s ease;
 transform: scale(1.2);
 }
 
+.model.pago{
+    border-radius: 3rem;
+    padding: 10rem;
+    background-color: #004d33;
+}
+
+.boton-pago{
+    border-radius: 1rem;
+    background-color: #00754a;
+    color: #fdfdfd;
+      padding: 0.25rem 0.75rem;
+      margin: 0.5rem;
+font-family: "Lexend Zetta", sans-serif;
+}
+#modal-pago {
+    display: none;
+    padding: 20px;
+    background: #dddddd;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Ajusta el valor para el redondeado deseado */
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    z-index: 1000;
+    text-align: center;
+}
+.boton-pago:hover {
+    background-color: #004d33; 
+}
+
+@media (max-width: 768px) {    
+    #boton-carrito {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-200%);
+        top: 50%;
+        z-index: 1050;
+    }
+    .navbar #logo-principal {
+        position: absolute;
+        order: 1;
+    }
+    .navbar-toggler {
+        order: 3;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1050;
+    }
+    /* Asegurarse que el menú desplegable no empuje la navbar */
+    .navbar-collapse {
+        margin-top: 60px; /* baja el menú desplegable */
+    }
+}
 

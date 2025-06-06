@@ -11,29 +11,29 @@
 
 <div class="contenido-delete-details-vista-admin">
     <hr />
-    <dl class="col-md-2">
-        <dt class = "col-sm-2">
+    <dl class="col">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.ID_Factura)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.ID_Factura)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Fecha)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Model.Fecha?.ToString("dd/MM/yyyy  HH:mm:ss")
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.Monto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.Monto)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col">
             @Html.DisplayNameFor(model => model.ID_FormaPago)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col">
             @Html.DisplayFor(model => model.ID_FormaPago)
         </dd>
     </dl>
@@ -51,5 +51,4 @@
             <a asp-action="Index">Back to List</a>
         </button>
     </div>
-
 </div>

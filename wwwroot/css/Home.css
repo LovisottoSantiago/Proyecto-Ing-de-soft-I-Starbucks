@@ -65,9 +65,21 @@
     background-color: none;
     font-size: 3rem;
 }
+#titulo-realizadores{
+    padding: 1rem 0rem 0rem 1rem;
+}
+.informacion-de-contacto{
+    padding: 1rem 0 6rem 0;
+    display: flex;
+    justify-content: space-around;
+}
 -->
 
 @media (max-width: 768px) {
+    body{
+        width: auto;
+        background-color: aqua;
+    }
     .Logo {
         display: none;
     } 
@@ -93,20 +105,24 @@
     font-style: bold;
     font-size: 6em;
 }
-
+.informacion-de-contacto{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+        padding: 1rem 0 0rem 0;
+}
+.nav-link{
+        display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.navbar-collapse {
+        margin-top: 0;
+    }
 }
 
 /*ACA VA A IR EL ESTILADO DE LA INFO DE CONTACTO*/
-
-#titulo-realizadores{
-    padding: 1rem 0rem 0rem 1rem;
-}
-
-.informacion-de-contacto{
-    padding: 1rem 0 6rem 0;
-    display: flex;
-    justify-content: space-around;
-}
 
 /* Saca el footer original */
 main.pb-3 {
@@ -141,10 +157,3 @@ main.pb-3 {
     color: #ffffff;
     font-family: "Lexend Zetta", sans-serif;
 }
-
-
-
-
-
-
-

@@ -42,6 +42,9 @@
         </tbody>
     </table>
 </div>
+<div class="subtitulo-seccion">
+    <h4>Total: $@Model.Sum(m => m.PrecioUnitario * m.Cantidad)</h4>
+</div>
 <div class="caja-boton-vuelta">
     <button class="boton-vuelta">
         <a asp-action="Index">Back to List</a>

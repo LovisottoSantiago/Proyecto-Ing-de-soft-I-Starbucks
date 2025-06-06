@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2 class="carteles-admin">Detalle de la Orden de Compra</h2>
+<div class="subtitulo-seccion">
+    <h4>Detalle de Orden de Compra</h4>
+</div>
 
 @if (Model != null && Model.Count > 0)
 {
@@ -38,8 +40,13 @@
         </table>
     </div>
 
-    <div class="total-carrito">
+    <div class="subtitulo-seccion">
         <h4>Total: $@Model.Sum(m => m.PrecioUnitario * m.Cantidad)</h4>
+    </div>
+    <div class="caja-boton-vuelta">
+        <button class="boton-vuelta">
+            <a asp-action="Index">Back to List</a>
+        </button>
     </div>
 }
 else

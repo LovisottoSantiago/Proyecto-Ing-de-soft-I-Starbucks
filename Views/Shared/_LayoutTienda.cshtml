@@ -19,12 +19,11 @@
     <div class="spinner"></div>
 </div>
 
-
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">El Mejor</a>
+                <a id="logo-principal" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">El Mejor</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -46,17 +45,17 @@
                                 }
                                 @if (!string.IsNullOrEmpty(primerNombre))
                                 {
-                                    <li class="nav-item" style="position: relative; cursor: pointer;">
-                                        <span class="nav-link">
-                                            Hola, @primerNombre
+                                    <li class="nav-item usuario-dropdown">
+                                        <span class="nav-link nombre-usuario">
+                                            HOLA, @primerNombre.ToUpper()
                                         </span>
-                                        <form method="post" asp-controller="Home" asp-action="Logout" class="logout-form" style="display: none; position: absolute; top: 100%; left: 0; border: 1px solid #ccc; padding: 5px; z-index: 100;">
-                                            <button type="submit" class="btn btn-link" style="padding: 0; margin: 0; border: none; background: none;">
-                                                Cerrar sesión
+                                        <form method="post" asp-controller="Home" asp-action="Logout" class="logout-form">
+                                            <button type="submit" class="cerrar-sesion-btn">
+                                                CERRAR SESIÓN
                                             </button>
                                         </form>
                                     </li>
-                    }
+                                }
                                 else
                                 {
                                     <li class="nav-item">
@@ -66,23 +65,21 @@
                                     </li>
                                 }
                     </ul>
+                </div>
                     <ul class="navbar-nav ms-auto list-unstyled d-flex align-items-center" style="gap: 10px;">
                          <li class="nav-item d-flex align-items-center" style="margin-left: 10px;">
-    <a href="#" id="boton-carrito" class="d-flex align-items-center text-decoration-none position-relative" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver carrito">
-        <img src="@Url.Content("~/Img/carrito.png")" alt="Carrito" id="img-carrito" style="width: 32px; height: 32px;" />
-        <span id="contador-carrito" class="custom-badge">0</span>
-    </a>
-</li>
-                        <li class="nav-item">
+                            <a href="#" id="boton-carrito" class="d-flex align-items-center text-decoration-none position-relative" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver carrito">
+                                <img src="@Url.Content("~/Img/carrito.png")" alt="Carrito" id="img-carrito" style="width: 32px; height: 32px;" />
+                                <span id="contador-carrito" class="custom-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item d-none d-sm-flex">
                             <button type="button" class="btn nav-link logo" onclick="showLogin()" style="background: none; border: none;">
                                 <img src="@Url.Content("~/Img/Logo_Starbucks.jpg")" alt="Vista admin" style="width: 45px; height: 45px; position:relative; top:6px"/>
                                 <span class="hover-text">Modo admin</span>
                              </button>
                         </li>
-                       
                     </ul>
-
-                </div>
             </div>
         </nav>
     </header>
