@@ -295,6 +295,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: #f9f9f9;
   scrollbar-width: none;
 }
 .main-container {
@@ -368,7 +369,7 @@ footer .container h5 {
 .carteles-admin {
   font-size: 3.5rem;
   color: #00754a;
-  padding: 4.5rem 0rem 0rem 0rem;
+  padding: 4.5rem 0rem 0rem 1.5rem;
   justify-self: center;
 }
 

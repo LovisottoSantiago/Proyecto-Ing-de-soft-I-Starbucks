@@ -11,9 +11,9 @@ display: flex;
 .tienda-cartel{
     font-family: "Lexend Zetta", sans-serif;
     font-optical-sizing: auto;
-    font-weight: auto;
-    font-style: bold;
+    font-weight: bold;
     font-size: 3.5rem;
+    text-align: center;
     color:#00754a;
     padding: 4.5rem 0rem 0rem 0rem;
     justify-self: center;

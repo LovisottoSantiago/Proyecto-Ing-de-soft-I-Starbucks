@@ -8,9 +8,7 @@
 <h2 class="carteles-admin">Clientes</h2>
 
 <div class="caja-boton-crear">
-    <button class="boton-crear">
-        <a asp-action="Create">Create New</a>
-    </button>
+    
 </div>
 
 
@@ -56,11 +54,11 @@
                 </td>
                 <td>
                     <button class="boton-vuelta">
-                        <a asp-action="Edit" asp-route-id="@item.ID_Cliente">Edit</a> 
+                        <a asp-action="Edit" asp-route-id="@item.ID_Cliente">Editar</a> 
                     </button>
                     
                     <button class="boton-vuelta">
-                        <a asp-action="Delete" asp-route-id="@item.ID_Cliente">Delete</a>
+                        <a asp-action="Delete" asp-route-id="@item.ID_Cliente">Dar de baja</a>
                     </button>
                 </td>
             </tr>
