@@ -98,12 +98,12 @@
         
         <div class="input-block">
             <label for="usuario">Usuario</label>
-            <input type="text" id="usuario" name="usuario" placeholder="Ingresá tu clave de usuario" required>
+            <input type="text" id="usuario" name="usuario" placeholder="Ingresar clave de usuario" required>
         </div>
 
         <div class="input-block">
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required>
+            <input type="password" id="password" name="password" placeholder="Ingresar contraseña" required>
         </div>
         
         <button type="submit">Iniciar sesión</button>
@@ -120,16 +120,16 @@
             <button type="button" onclick="closeFormU()">&times;</button> </div>
         <div>
             <form class="login-form" asp-action="LoginUsuario" asp-controller="Home" method="post">
-                <h2>Iniciar sesión de Usuario</h2>
+                <h2>Iniciar sesión</h2>
 
                 <div class="input-block">
                     <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="Ingresá tu correo" required>
+                    <input type="email" id="email" name="email" placeholder="Ingresar correo" required>
                 </div>
 
                 <div class="input-block">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required>
+                    <input type="password" id="password" name="password" placeholder="Ingresar contraseña" required>
                 </div>
 
                 <button type="submit">Iniciar sesión</button>
@@ -141,34 +141,32 @@
             </button>
         </div>
 
-
-        <!-- ACA TENGO QUE LABURAR YO, MEJORAR ALGUNAS COSAS DE DISEÑO >-->
-
         <div id="register-usuario-container">
             <div class="close-button"> 
                 <button type="button" onclick="closeFormR()">&times;</button> 
             </div>
             <div>
                 <form class="register-form" asp-action="RegistroUsuario" asp-controller="Home" method="post">
+                    <h2>Registrar cuenta</h2>
                     <div class="input-block">
                         <label for="nombreCompleto">Nombre completo</label>
-                        <input type="text" id="nombreCompleto" name="nombreCompleto" required>
+                        <input type="text" id="nombreCompleto" name="nombreCompleto" placeholder="Ingresar nombre completo" required>
                     </div>
                     <div class="input-block">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" placeholder="Ingresar correo" required>
                     </div>
                     <div class="input-block">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" id="telefono" name="telefono" required>
+                        <input type="number" id="telefono" name="telefono" placeholder="Ingresar número telefónico" required>
                     </div>
                     <div class="input-block">
                         <label for="direccion">Dirección</label>
-                        <input type="text" id="direccion" name="direccion" required>
+                        <input type="text" id="direccion" name="direccion" placeholder="Ingresar dirección"required>
                     </div>
                     <div class="input-block">
                         <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" placeholder="Ingresar contraseña" required>
                     </div>
                     <button type="submit">Registrarse</button>
                 </form>

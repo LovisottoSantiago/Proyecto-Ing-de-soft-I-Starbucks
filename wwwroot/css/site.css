@@ -47,7 +47,8 @@ html {
 }
 
 #login-container,
-#login-usuario-container {
+#login-usuario-container,
+#register-usuario-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -57,21 +58,23 @@ html {
   border: 1px solid #ccc;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 0px 30px 20px 30px;
+  padding: 1rem 2rem 1.5rem 2rem;
   z-index: 1000;
   display: none;
   text-align: center;
 }
 
 #login-container h2,
-#login-usuario-container h2 {
+#login-usuario-container h2,
+#register-usuario-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #00704a;
 }
 
 #login-container button,
-#login-usuario-container button {
+#login-usuario-container button,
+#register-usuario-container button {
   color: white;
   border: none;
   padding: 12px 20px;
@@ -84,35 +87,22 @@ html {
 }
 
 #login-container button:hover,
-#login-usuario-container button:hover {
+#login-usuario-container button:hover,
+#register-usuario-container button:hover {
   background-color: #012c1c;
 }
 
 #login-container .close-button,
-#login-usuario-container .close-button {
+#login-usuario-container .close-button,
+#register-usuario-container .close-button {
   justify-self: end;
 }
 
 #login-container .close-button button,
-#login-usuario-container .close-button button {
+#login-usuario-container .close-button button,
+#register-usuario-container .close-button button {
   padding: 0.25rem 0.75rem;
   border-radius: 5px;
-}
-
-#register-usuario-container {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 0px 30px 10px 30px; /*aca era todos los margin con 30 px*/
-  width: 300px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
- 
 }
 
 .register-form {
@@ -138,8 +128,6 @@ html {
   box-sizing: border-box;
 }
 
-/* ACA TENGO QUE LABURAR YO, MATEO HACE EL RESPONSIVE*/
-
 #register-usuario-container button[type="submit"] {
   background-color: #00704a;
   color: white;
@@ -155,23 +143,6 @@ html {
   background-color: #005f3c;
 }
 
-#register-usuario-container .close-button {
-  text-align: right;
-  margin-bottom: 10px;
-}
-
-#register-usuario-container .close-button button {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #888;
-}
-
-#register-usuario-container .close-button button:hover {
-  color: #000;
-}
-
 /*HASTA ACA */
 
 li.nav-item:hover .logout-form {
@@ -182,7 +153,9 @@ li.nav-item:hover .logout-form {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"],
+input[type="number"] {
   width: 100%;
   padding: 12px 15px;
   margin: 10px 0;
@@ -192,7 +165,9 @@ input[type="password"] {
   transition: border-color 0.3s;
 }
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
   border-color: #00704a;
   outline: none;
 }
@@ -226,15 +201,17 @@ input[type="password"]:focus {
     border: 1px solid #ccc;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 0rem 2rem 2rem 2rem;
+    padding: 2rem 2rem 2rem 2rem;
     z-index: 1000;
     display: none;
     text-align: center;
   }
 
   input[type="text"],
-  input[type="password"] {
-    text-align: center;
+  input[type="password"],
+  input[type="email"],
+  input[type="number"] {
+    text-align: start;
     width: 16rem;
     padding: 12px 15px;
     margin: 10px 0;
@@ -244,7 +221,8 @@ input[type="password"]:focus {
     transition: border-color 0.3s;
   }
   #login-container button,
-  #login-usuario-container button {
+  #login-usuario-container button,
+  #register-usuario-container button {
     color: white;
     border: none;
     padding: 12px 20px;
@@ -257,25 +235,31 @@ input[type="password"]:focus {
   }
 
   #login-container button:hover,
-  #login-usuario-container button:hover {
+  #login-usuario-container button:hover,
+  #register-usuario-container button:hover {
     background-color: #012c1c;
   }
 
   #login-container h2,
-  #login-usuario-container h2 {
+  #login-usuario-container h2,
+  #register-usuario-container h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #00704a;
   }
 
   #login-container .close-button,
-  #login-usuario-container .close-button {
+  #login-usuario-container .close-button,
+  #register-usuario-container .close-button {
     justify-self: end;
   }
 
   #login-container .close-button button,
-  #login-usuario-container .close-button button {
-    padding: 50%;
+  #login-usuario-container .close-button button,
+  #register-usuario-container .close-button button {
+    position: absolute;
+    top: 0;
+    left: 85%;
   }
   .nav-item{
     display: flex;
@@ -773,7 +757,6 @@ footer .container h5 {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
   background-color: #005f3a;
   border: none;
   padding: 8px 10px;
@@ -804,4 +787,28 @@ footer .container h5 {
 .cerrar-sesion-btn:hover {
   color: black;
   text-decoration: none !important;
+}
+
+@media (max-width: 768px){
+  .navbar-collapse{
+    margin-top: -1px;
+    position: absolute;
+    padding: 0rem 2rem 1rem 2rem;
+    width: fit-content; /* o max-content, si tienes problemas de compatibilidad */
+    top: 100%; /* justo debajo del botón */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .navbar-nav{
+    margin-left: 0;
+    gap: .5rem;
+  }
+  .navbar-nav .nav-item{
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
