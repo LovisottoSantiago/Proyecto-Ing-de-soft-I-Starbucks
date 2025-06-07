@@ -78,7 +78,7 @@
 @media (max-width: 768px) {
     body{
         width: auto;
-        background-color: aqua;
+        background-color: #005f3a;
     }
     .Logo {
         display: none;
@@ -110,16 +110,14 @@
     flex-wrap: wrap;
     justify-content: center;
     height: auto;
-        padding: 1rem 0 0rem 0;
+    padding: 1rem 0 0rem 0;
 }
 .nav-link{
-        display: flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.navbar-collapse {
-        margin-top: 0;
-    }
+
 }
 
 /*ACA VA A IR EL ESTILADO DE LA INFO DE CONTACTO*/
